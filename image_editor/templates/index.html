@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+    <div class="top-padding"></div>
+    <div class="card upload-card">
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col-md-8 text-center">
+                <div class="top-padding"></div>
+                <div class="top-padding"></div>
+                <form action="/upload/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="id_image"><i for="id_image" class="bi-add-image bi-plus-lg"></i></label>
+                    <input type="file" name="image" accept="image/*" required id="id_image">
+                </form>
+                <div class="top-padding"></div>
+                <h3 class="dark-title">Upload</h3>
+                <div class="top-padding"></div>
+                {% if img %}
+                <div class="img-card">
+                    <img src="{{ img.image.url }}" alt="connect">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
