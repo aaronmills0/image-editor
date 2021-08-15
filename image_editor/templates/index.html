@@ -11,7 +11,7 @@
                     <form action="/upload/" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <label for="id_image" class="mt-3"><i for="id_image" class="bi-add-image bi-upload"></i></label>
-                        <input type="file" name="image" accept="image/*" onchange="getFilename(), enableContinue()" required id="id_image">
+                        <input type="file" name="image" accept="image/*" onchange="getFilename(), enableContinue(), disableContinue()" required id="id_image">
                     </form>
                     <div class="top-padding"></div>
                     <h3 class="dark-title mt-3" id="upload-text">Upload</h3>
