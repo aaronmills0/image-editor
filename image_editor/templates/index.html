@@ -3,24 +3,23 @@
 
 <body>
     <div class="top-padding"></div>
-    <div class="card upload-card">
-        <div class="row d-flex justify-content-center text-center">
-            <div class="col-md-8 text-center">
-                <div class="top-padding"></div>
-                <div class="top-padding"></div>
-                <form action="/upload/" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <label for="id_image"><i for="id_image" class="bi-add-image bi-plus-lg"></i></label>
-                    <input type="file" name="image" accept="image/*" required id="id_image">
-                </form>
-                <div class="top-padding"></div>
-                <h3 class="dark-title">Upload</h3>
-                <div class="top-padding"></div>
-                {% if img %}
-                <div class="img-card">
-                    <img src="{{ img.image.url }}" alt="connect">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 text-center my-auto">
+                <div class="container card upload-card align-items-center justify-content-center">
+                    <div class="top-padding"></div>
+                    <div class="top-padding"></div>
+                    <form action="/upload/" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="id_image" class="mt-3"><i for="id_image" class="bi-add-image bi-upload"></i></label>
+                        <input type="file" name="image" accept="image/*" onchange="getFilename(), enableContinue()" required id="id_image">
+                    </form>
+                    <div class="top-padding"></div>
+                    <h3 class="dark-title mt-3" id="upload-text">Upload</h3>
+                    <div class="top-padding"></div>
+                    <button class="btn-custom mb-3 btn-custom-disabled" href="#" id="continue-button"><i class="bi-forward-fill icon-disabled"></i></button>
+                    <div class="top-padding"></div>
+                    <div class="top-padding"></div>
                 </div>
-                {% endif %}
             </div>
         </div>
     </div>
