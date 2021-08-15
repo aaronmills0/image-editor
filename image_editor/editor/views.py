@@ -18,3 +18,7 @@ def image_upload(request):
     else:
         form = ImageForm()
     return render(request, template_name, {'form': form})
+
+def canvas(request):
+    template_name = 'canvas.html'
+    return render(request, template_name, {'image': img})
