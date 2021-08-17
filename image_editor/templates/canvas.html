@@ -10,8 +10,8 @@
             </div>
             <div class="col-md-7 text-center my-auto">
                 <div class="container card img-card align-items-center justify-content-center">
-                    {% if img != None %}
-                    <img class ="d-block w-100" src="{{ img }} alt="image">
+                    {% if name != None %}
+                    <img class ="d-block w-100" src="../media/tmp/{{ name }}" alt="image">
                     {% else %}
                     <h3 class="dark-title mt-4" id="upload-text">Failed to load image</h3>
                     {% endif %}
