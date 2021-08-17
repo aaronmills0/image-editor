@@ -37,6 +37,8 @@ body {
     border-radius: 3em;
     transition: 0.5s;
     width: 100px;
+    text-align: center;
+    margin: 10px;
 }
 
 .btn-custom:hover {
@@ -151,4 +153,19 @@ input[type="file"] {
     background-color: var(--secondary-color);
     border-radius: 15px;
     height: 80vh;
+}
+
+.list-group-item {
+    width: 100%;
+    background-color: #2b3344;
+    border-radius: 15px;
+}
+
+.navbar-footer {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    margin-bottom: -20px;
+    margin-top: 10px;
+    text-align: center;
+    height: 20vh;
 }

@@ -17,8 +17,21 @@
               <a class="navbar-brand" href="{% url 'upload' %}">Navbar</a>
             </div>
           </nav>
+          <div class="top-padding"></div>
         {% block content %}
         {% endblock content %}
+        <footer>
+          <div class="top-padding"></div>
+          <nav class="navbar navbar-footer">
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-12 text-center">
+                <div class="container align-items-center justify-content-center">
+                    <p>© 2021 Copyright</p>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </footer>
     </body>
     <script src="{% static 'js/get_filename.js' %}"></script>
     <script src="{% static 'js/auto_submit.js' %}"></script>

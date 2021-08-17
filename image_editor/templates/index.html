@@ -2,21 +2,19 @@
 {% block content %}
 
 <body>
-    <div class="top-padding"></div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10 text-center my-auto">
-                <div class="container card upload-card align-items-center justify-content-center">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10 text-center my-auto">
+            <div class="container card upload-card align-items-center justify-content-center">
+                <div class="top-padding"></div>
+                <div class="top-padding"></div>
+                <form method="post" enctype="multipart/form-data" id="image-form">
+                    {% csrf_token %}
+                    <label for="id_image" class="mt-3" ><i for="id_image" class="bi-add-image bi-upload"></i></label>
+                    <input type="file" name="image" accept="image/*" onchange="getFilename(); autoSubmit();" id="id_image">
                     <div class="top-padding"></div>
+                    <h3 class="dark-title mt-4" id="upload-text">Upload</h3>
                     <div class="top-padding"></div>
-                    <form method="post" enctype="multipart/form-data" id="image-form">
-                        {% csrf_token %}
-                        <label for="id_image" class="mt-3" ><i for="id_image" class="bi-add-image bi-upload"></i></label>
-                        <input type="file" name="image" accept="image/*" onchange="getFilename(); autoSubmit();" id="id_image">
-                        <div class="top-padding"></div>
-                        <h3 class="dark-title mt-4" id="upload-text">Upload</h3>
-                        <div class="top-padding"></div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
