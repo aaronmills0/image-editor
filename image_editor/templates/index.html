@@ -8,21 +8,18 @@
                 <div class="container card upload-card align-items-center justify-content-center">
                     <div class="top-padding"></div>
                     <div class="top-padding"></div>
-                    <form action="/upload/" method="POST" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" id="image-form">
                         {% csrf_token %}
-                        <label for="id_image" class="mt-3"><i for="id_image" class="bi-add-image bi-upload"></i></label>
-                        <input type="file" name="image" accept="image/*" onchange="getFilename(), enableContinue(), disableContinue()" required id="id_image">
+                        <label for="id_image" class="mt-3" ><i for="id_image" class="bi-add-image bi-upload"></i></label>
+                        <input type="file" name="image" accept="image/*" onchange="getFilename(); autoSubmit();" id="id_image">
+                        <div class="top-padding"></div>
+                        <h3 class="dark-title mt-4" id="upload-text">Upload</h3>
+                        <div class="top-padding"></div>
                     </form>
-                    <div class="top-padding"></div>
-                    <h3 class="dark-title mt-3" id="upload-text">Upload</h3>
-                    <div class="top-padding"></div>
-                    <a class="btn-custom mb-3 btn-custom-disabled" href="{% url 'canvas' %}" id="continue-button"><i class="bi-arrow-right icon-disabled"></i></a>
-                    <div class="top-padding"></div>
-                    <div class="top-padding"></div>
                 </div>
             </div>
         </div>
     </div>
 </body>
 
-{% endblock %}
+{% endblock content %}

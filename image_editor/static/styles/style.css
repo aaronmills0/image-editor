@@ -1,6 +1,7 @@
 :root {
     --primary-color: #ff0946;
     --secondary-color: #1d222e;
+    --tertiary-color: #2b3344;
     --dark-color: #151820;
     --light-color: #F5F5F5;
     --text-font: "Montserrat";
@@ -21,6 +22,10 @@ body {
 
 .top-padding {
     padding: 3vh;
+}
+
+.top-padding-small {
+    padding: 1vh;
 }
 
 .btn-custom {
@@ -127,6 +132,10 @@ input[type="file"] {
 }
 
 .bi-arrow-right {
+    font-size: 25px;
+}
+
+.bi-arrow-left {
     font-size: 25px;
 }
 

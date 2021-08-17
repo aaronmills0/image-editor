@@ -14,12 +14,12 @@
     <body>
         <nav class="navbar navbar-custom">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+              <a class="navbar-brand" href="{% url 'upload' %}">Navbar</a>
             </div>
           </nav>
         {% block content %}
         {% endblock content %}
     </body>
-    <script src="{% static 'scripts/get_filename.js' %}"></script>
-    <script src="{% static 'scripts/enable_continue.js' %}"></script>
+    <script src="{% static 'js/get_filename.js' %}"></script>
+    <script src="{% static 'js/auto_submit.js' %}"></script>
 </html>

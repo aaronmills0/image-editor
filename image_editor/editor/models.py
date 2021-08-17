@@ -1,7 +1,10 @@
 from django.db import models
+import shutil
+import os
+from django.conf import settings
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='images')
+    shutil.rmtree('{}\\tmp'.format(settings.MEDIA_ROOT[:-1]))
+    os.mkdir('{}\\tmp'.format(settings.MEDIA_ROOT[:-1]))
+    image = models.ImageField(upload_to='tmp')
 
-    def __str__(self):
-        return self.image

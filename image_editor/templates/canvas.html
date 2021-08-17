@@ -5,12 +5,16 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-3 text-center my-auto">
                 <div class="container card op-card align-items-center justify-content-center">
-                    
+                    <a class="btn-custom mb-3" id="back-button" href="{% url 'upload' %}"><i class="bi-arrow-left"></i></a>
                 </div>
             </div>
             <div class="col-md-7 text-center my-auto">
                 <div class="container card img-card align-items-center justify-content-center">
-                    
+                    {% if img != None %}
+                    <img class ="d-block w-100" src="{{ img }} alt="image">
+                    {% else %}
+                    <h3 class="dark-title mt-4" id="upload-text">Failed to load image</h3>
+                    {% endif %}
                 </div>
             </div>
         </div>
