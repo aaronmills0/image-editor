@@ -1,40 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
 <body>
-    <button class="button-transparent ml-3" type="button" onclick="openNav()"><i class="sidebar-icon bi-list"></i></button>
     <div id="sidebar" class="sidenav" style="left: -250px;">
-        <a class="sidebar-option">
+        <div class="sidebar-option">
+            <div class="row">
+                <div class="col mt-1 mb-3">
+                    <button class="btn-custom-circle-sidebar sidebar-close" type="button" id="sidebarClose" onclick="closeNav()"><i class="sidebar-close-icon bi-x-lg"></i></button>
+                </div>
+            </div>
             <div class="row ml-0">
                 <div class="col-md-7 mb-3 mt-3">
                     <div class="row">
-                        
+                        <ul>
+                            <div class="card sidebar-card">
+                                <p class="secondary-title sidebar-title">Blur</p>
+                                <input type="range" class="form-range sidebar-range" min="0" max="6" default="0" step="1" id="blur-range">
+                            </div>
+                        </ul>
                     </div>
                 </div>
-                <div class="col mt-3 mb-3">
-                    <button class="button-transparent" type="button" id="sidebarClose" onclick="closeNav()"><i class="sidebar-close-icon bi-x-lg"></i></button>
-                </div>
             </div>
-        </a>                
+        </div>                
     </div>
     <div class="row d-flex justify-content-center">
-        <div class="col-lg-10 text-center my-auto">
+        <div class="col-sm-2 mt-1">
+            <button class="btn-custom-circle sidebar-open" type="button" onclick="openNav()"><i class="sidebar-icon bi-list"></i></button>
+        </div>
+        <div class="col-md-8 text-center">
             <div class="card img-card align-items-center justify-content-center">
                 {% if name != None %}
                 <div class="selected-image">
-                    <img class ="d-block w-100" src="../media/tmp/{{ name }}" alt="image">
+                    <img class ="canvas-image d-block w-100" src="../media/tmp/{{ name }}" alt="unable to locate image">
                 </div>
                 {% else %}
                 <h3 class="dark-title mt-4" id="upload-text">Failed to load image</h3>
                 {% endif %}
             </div>
-        </div>
-    </div>
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-3">
-            <a class="btn-custom mb-3" id="back-button" href="{% url 'upload' %}"><i class="bi-arrow-left"></i></a>
-        </div>
-        <div class="col-md-6">
-            <a class="btn-custom mb-3" id="back-button" href="#"><i class="bi-arrow-left"></i></a>
+            <div class="row d-flex justify-content-center">
+                <a class="btn-custom mb-3 mt-3" id="back-button" href="{% url 'upload' %}"><i class="bi-arrow-left"></i></a>
+                <a class="btn-custom mb-3 mt-3" id="download-button" href="../media/tmp/{{ name }}" download="{{name}}"><i class="bi-download"></i></a>
+            </div>
         </div>
     </div>
 </body>

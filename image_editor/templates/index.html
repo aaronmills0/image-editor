@@ -9,10 +9,10 @@
                 <div class="top-padding"></div>
                 <form method="post" enctype="multipart/form-data" id="image-form">
                     {% csrf_token %}
-                    <label for="id_image" class="mt-3" ><i for="id_image" class="bi-add-image bi-upload"></i></label>
+                    <label for="id_image" class="btn-custom-circle-lg" ><i for="id_image" class="bi-upload"></i></label>
                     <input type="file" name="image" accept="image/*" onchange="getFilename(); autoSubmit();" id="id_image">
                     <div class="top-padding"></div>
-                    <h3 class="dark-title mt-4" id="upload-text">Upload</h3>
+                    <p class="dark-title mt-2" id="upload-text">Upload</p>
                     <div class="top-padding"></div>
                 </form>
             </div>

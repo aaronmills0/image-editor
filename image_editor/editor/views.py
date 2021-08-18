@@ -21,6 +21,20 @@ def clear_tmp():
         except Exception as e:
             print("Failed to clear /tmp: {}".format(e))
 
+def copy_img(name):
+    folder = settings.MEDIA_ROOT + 'tmp'
+    index = str(name).find('.')
+    new_name = str(name)[:index] + '_copy' + str(name)[index:]
+    print("New name: {}".format(new_name))
+    try:
+        original = os.path.join(folder, str(name))
+        copy = os.path.join(folder, new_name)
+        shutil.copy(original, copy)
+    except Exception as e:
+        print("Failed to copy {}".format(name))
+        
+
+
 def image_upload(request):
     clear_tmp()
     global img_name
@@ -34,6 +48,7 @@ def image_upload(request):
             print(img)
             img.save()
             img_name = form.cleaned_data.get('image')
+            copy_img(img_name)
             print(img_name)
             return redirect('/canvas/')
     else:
