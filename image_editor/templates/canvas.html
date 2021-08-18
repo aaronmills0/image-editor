@@ -1,24 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 <body>
-    <div class="top-padding"></div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-3 text-center my-auto">
-                <div class="card op-card">
-                    <ul>
+    <button class="button-transparent ml-3" type="button" onclick="openNav()"><i class="sidebar-icon bi-list"></i></button>
+    <div id="sidebar" class="sidenav" style="left: -250px;">
+        <a class="sidebar-option">
+            <div class="row ml-0">
+                <div class="col-md-7 mb-3 mt-3">
+                    <div class="row">
                         
-                    </ul>
-                    <div class="top-padding"></div>
+                    </div>
+                </div>
+                <div class="col mt-3 mb-3">
+                    <button class="button-transparent" type="button" id="sidebarClose" onclick="closeNav()"><i class="sidebar-close-icon bi-x-lg"></i></button>
                 </div>
             </div>
-            <div class="col-md-7 text-center my-auto">
-                <div class="container card img-card align-items-center justify-content-center">
-                    {% if name != None %}
+        </a>                
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-10 text-center my-auto">
+            <div class="card img-card align-items-center justify-content-center">
+                {% if name != None %}
+                <div class="selected-image">
                     <img class ="d-block w-100" src="../media/tmp/{{ name }}" alt="image">
-                    {% else %}
-                    <h3 class="dark-title mt-4" id="upload-text">Failed to load image</h3>
-                    {% endif %}
                 </div>
+                {% else %}
+                <h3 class="dark-title mt-4" id="upload-text">Failed to load image</h3>
+                {% endif %}
             </div>
         </div>
     </div>

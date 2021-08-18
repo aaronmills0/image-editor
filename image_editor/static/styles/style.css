@@ -25,7 +25,7 @@ body {
 }
 
 .top-padding-small {
-    padding: 1vh;
+    padding: 1.5vh;
 }
 
 .btn-custom {
@@ -125,6 +125,7 @@ body {
     border-radius: 15px;
     height: 80vh;
     width: 80%;
+    margin-top: 10px;
 }
 
 input[type="file"] {
@@ -152,20 +153,115 @@ input[type="file"] {
     color: var(--dark-color);
     background-color: var(--secondary-color);
     border-radius: 15px;
-    height: 80vh;
+    height: 90vh;
 }
 
 .list-group-item {
     width: 100%;
-    background-color: #2b3344;
+    background-color: var(--tertiary-color);
     border-radius: 15px;
 }
 
 .navbar-footer {
     background-color: var(--secondary-color);
     color: var(--light-color);
-    margin-bottom: -20px;
-    margin-top: 10px;
+    margin-top: 5vh;
     text-align: center;
-    height: 20vh;
+    height: 12vh;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.copyright-text {
+    font-size: 14px;
+    margin-top: 6vh;
+}
+
+.sidenav a:hover {
+    color: var(--primary-color);
+    transition: 0.3s;
+}
+
+.sidebar-close-icon {
+    position: relative;
+    font-size: 22px;
+    color: var(--primary-color);
+    transition: 0.3s;
+    margin-left: 12px;
+}
+
+.sidebar-close-icon:hover {
+    color: var(--light-color);
+    transition: 0.3s;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    .navbar {height: 50px;}
+}
+
+.sidebar-icon:hover {
+    color: var(--primary-color);
+    transition: 0.3s;
+}
+
+.sidebar-icon {
+    font-size: 32px;
+    color: var(--secondary-color);
+    margin-right: 15px;
+    transition: 0.3s;
+}
+
+.sidenav {
+    height: 100%;
+    left: -250px;
+    width: 250px;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: var(--secondary-color);
+    overflow-x: hidden;
+    padding-top: 70px;
+    transition: 0.5s;
+}
+
+.sidenav a {
+    font-family: var(--title-font);
+    padding: 8px, 8px, 8px, 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: var(--light-color);
+    display: block;
+    transition: 0.3s;
+    position: relative;
+}
+
+.sidebar-option {
+    color: var(--light-color);
+    padding-left: 30px;
+    transition: 0.3s;
+}
+
+.sidebar-option:hover {
+    color: var(--primary-color);
+    transition: 0.3s;
+}
+
+.button-transparent,  .button-transparent:focus, .button-transparent:active, .button-transparent.active, .open>.dropdown-toggle.button-transparent {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none !important; 
+    cursor:pointer;
+    overflow: hidden;
+    outline:none !important;
+    box-shadow: none; 
+    padding: 0;
+}
+
+.selected-image {
+    width: 75%;
 }
