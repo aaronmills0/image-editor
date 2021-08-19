@@ -16,42 +16,47 @@
                                 {% csrf_token %}
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Grayscale</p>
-                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ grayscale }}" onchange="autoSubmit('data-form');" name="grayscale" id="id_grayscale">
+                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ grayscale }}" onchange="autoSubmit('data-form');refreshImage();" name="grayscale" id="id_grayscale">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Sepia</p>
-                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ sepia }}" onchange="autoSubmit('data-form');" name="sepia" id="id_sepia">
+                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ sepia }}" onchange="autoSubmit('data-form');refreshImage();" name="sepia" id="id_sepia">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Binarize</p>
-                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ binarize }}" onchange="autoSubmit('data-form');" name="binarize" id="id_binarize">
+                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ binarize }}" onchange="autoSubmit('data-form');refreshImage();" name="binarize" id="id_binarize">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Smoothness</p>
-                                    <input type="range" class="form-range sidebar-range" min="0" max="6" step="1" value="{{ smoothness }}" onchange="autoSubmit('data-form');" name="smoothness" id="id_smoothness">
+                                    <input type="range" class="form-range sidebar-range" min="0" max="6" step="1" value="{{ smoothness }}" onchange="autoSubmit('data-form');refreshImage();" name="smoothness" id="id_smoothness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Sharpness</p>
-                                    <input type="range" class="form-range sidebar-range" min="0" max="6" step="1" value="{{ sharpness }}" onchange="autoSubmit('data-form');" name="sharpness" id="id_sharpness">
+                                    <input type="range" class="form-range sidebar-range" min="0" max="6" step="1" value="{{ sharpness }}" onchange="autoSubmit('data-form');refreshImage();" name="sharpness" id="id_sharpness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Brightness</p>
-                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ brightness }}" onchange="autoSubmit('data-form');" name="brightness" id="id_brightness">
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ brightness }}" onchange="autoSubmit('data-form');refreshImage();" name="brightness" id="id_brightness">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Contrast</p>
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ constrast }}" onchange="autoSubmit('data-form');refreshImage();" name="contrast" id="id_contrast">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Saturation</p>
-                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ saturation }}" onchange="autoSubmit('data-form');" name="saturation" id="id_saturation">
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ saturation }}" onchange="autoSubmit('data-form');refreshImage();" name="saturation" id="id_saturation">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Resize</p>
-                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ resize }}" onchange="autoSubmit('data-form');" name="resize" id="id_resize">
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ resize }}" onchange="autoSubmit('data-form');refreshImage();" name="resize" id="id_resize">
                                 </div>
                             </form>
                         </ul>
@@ -68,7 +73,7 @@
             <div class="card img-card align-items-center justify-content-center">
                 {% if name != None %}
                 <div class="selected-image">
-                    <img class ="canvas-image d-block w-100" src="../media/tmp/{{ name }}" alt="unable to locate image">
+                    <img class ="canvas-image d-block w-100" src="../media/tmp/{{ name }}" alt="unable to locate image" id="image">
                 </div>
                 {% else %}
                 <h3 class="dark-title mt-4" id="upload-text">Failed to load image</h3>

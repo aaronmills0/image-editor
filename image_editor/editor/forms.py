@@ -14,5 +14,6 @@ class DataForm(forms.Form):
     smoothness = forms.IntegerField(widget=RangeInput)
     sharpness = forms.IntegerField(widget=RangeInput)
     brightness = forms.IntegerField(widget=RangeInput)
+    contrast = forms.IntegerField(widget=RangeInput)
     saturation = forms.IntegerField(widget=RangeInput)
     resize = forms.IntegerField(widget=RangeInput)

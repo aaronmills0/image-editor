@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image
 import os, shutil
 from django.conf import settings
+from .editor import Editor
 # Create your views here.
 img_name = None
 img_copy_name = None
@@ -16,11 +17,13 @@ temp = {
     "smoothness": 0,
     "sharpness": 0,
     "brightness": 0,
+    "contrast": 0,
     "saturation": 0,
     "resize": 0
 }
 
 def clear_tmp():
+    global temp
     folder = settings.MEDIA_ROOT + 'tmp'
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
@@ -31,6 +34,17 @@ def clear_tmp():
                 shutil.rmtree(file_path)
         except Exception as e:
             print("Failed to clear /tmp: {}".format(e))
+    temp = {
+        "grayscale": 0,
+        "sepia": 0,
+        "binarize": 0,
+        "smoothness": 0,
+        "sharpness": 0,
+        "brightness": 0,
+        "contrast": 0,
+        "saturation": 0,
+        "resize": 0
+    }
 
 def copy_img(name):
     global img_copy_name
@@ -68,16 +82,6 @@ def image_upload(request):
         form = ImageForm()
     return render(request, template_name, {'form': form})
 
-def fill_form(form):
-    form.cleaned_data["grayscale"] = temp.get("grayscale")
-    form.cleaned_data["sepia"] = temp.get("sepia")
-    form.cleaned_data["binarize"] = temp.get("binarize")
-    form.cleaned_data["smoothness"] = temp.get("smoothness")
-    form.cleaned_data["sharpness"] = temp.get("sharpness")
-    form.cleaned_data["brightness"] = temp.get("brightness")
-    form.cleaned_data["saturation"] = temp.get("saturation")
-    form.cleaned_data["resize"] = temp.get("resize")
-
 def canvas(request):
     global temp
     template_name = 'canvas.html'
@@ -92,18 +96,19 @@ def canvas(request):
             data.update({"smoothness": form.cleaned_data.get("smoothness")})
             data.update({"sharpness": form.cleaned_data.get("sharpness")})
             data.update({"brightness": form.cleaned_data.get("brightness")})
+            data.update({"contrast": form.cleaned_data.get("contrast")})
             data.update({"saturation": form.cleaned_data.get("saturation")})
             data.update({"resize": form.cleaned_data.get("resize")})
             temp = data.copy()
             print("Data: {}".format(data))
             print("Temp: {}".format(temp))
-            # perform necessary operations on the image
+            editor = Editor(temp)
+            editor.update()
         else: 
             print("Invalid form")
     else:
         print("Form: {}".format(temp))
         form = DataForm()
-        #fill_form(form)
     res = {
         'name': img_name, 
         'form': form, 
@@ -113,6 +118,7 @@ def canvas(request):
         'smoothness': temp.get('smoothness'),
         'sharpness': temp.get('sharpness'),
         'brightness': temp.get('brightness'),
+        'contrast': temp.get('contrast'),
         'saturation': temp.get('saturation'),
         'resize': temp.get('resize')
         }
