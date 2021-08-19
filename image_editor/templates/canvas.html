@@ -12,10 +12,47 @@
                 <div class="col-md-7 mb-3 mt-3">
                     <div class="row">
                         <ul>
-                            <div class="card sidebar-card">
-                                <p class="secondary-title sidebar-title">Blur</p>
-                                <input type="range" class="form-range sidebar-range" min="0" max="6" default="0" step="1" id="blur-range">
-                            </div>
+                            <form method="post" id="data-form">
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Grayscale</p>
+                                    <input type="checkbox" class="form-check-input sidebar-checkbox"value="0" id="grayscale">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Sepia</p>
+                                    <input type="checkbox" class="form-check-input sidebar-checkbox"value="0" id="sepia">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Binarize</p>
+                                    <input type="checkbox" class="form-check-input sidebar-checkbox"value="0" id="binarize">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Smoothness</p>
+                                    <input type="range" class="form-range sidebar-range" min="0" max="6" default="0" step="1" value="0" id="smoothness">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Sharpness</p>
+                                    <input type="range" class="form-range sidebar-range" min="0" max="6" default="0" step="1" value="0" id="sharpness">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Brightness</p>
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" default="0" step="1" value="0" id="brightness">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Saturation</p>
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" default="0" step="1" value="0" id="saturation">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Resize</p>
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" default="0" step="1" value="0" id="resize">
+                                </div>
+                            </form>
                         </ul>
                     </div>
                 </div>

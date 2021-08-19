@@ -28,6 +28,10 @@ body {
     padding: 1.5vh;
 }
 
+.side-padding {
+    padding: 0.5vh;
+}
+
 .btn-custom-circle {
     display: inline-block;
     background-color: var(--dark-color);
@@ -156,14 +160,17 @@ body {
     transition: 0.1s;
 }
 .primary-title {
+    font-size: 25px;
     color: var(--primary-color);
 }
 
 .secondary-title {
+    font-size: 25px;
     color: var(--secondary-color);
 }
 
 .light-title {
+    font-size: 25px;
     color: var(--light-color);
 }
 
@@ -231,7 +238,7 @@ input[type="file"] {
     color: var(--light-color);
     background-color: var(--tertiary-color);
     border-radius: 15px;
-    height: 10vh;
+    height: 100px;
     width: 188px;
 }
 
@@ -322,13 +329,13 @@ label {
 
 .sidebar-open {
     position: fixed;
-    left: 172px;
+    left: 158px;
     top: 24px;
 }
 
 .sidebar-close {
     position: relative;
-    left: 142px;
+    left: 128px;
 }
 
 .sidebar-title {
@@ -355,4 +362,43 @@ label {
 
 .sidebar-range::-webkit-slider-runnable-track,  .sidebar-range::-webkit-slider-runnable-track:hover, .sidebar-range::-webkit-slider-runnable-track:active, .sidebar-range::-webkit-slider-runnable-track:focus {
     background: var(--secondary-color);
+}
+
+.sidebar-checkbox, .sidebar-checkbox:hover{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    align-self: center;
+    border-color: var(--primary-color);
+    box-shadow: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 3em;
+}
+
+.sidebar-checkbox:active, .sidebar-checkbox:focus .sidebar-checkbox:checked .sidebar-checkbox[type=checkbox] {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    align-self: center;
+    border-color: var(--primary-color);
+    box-shadow: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 3em;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 3em;
+    box-shadow: none;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border: none;
+    box-shadow: none;
+    border-radius: 3em;
+}
+
+.form-check-input {
+    border: none;
+    box-shadow: none;
 }

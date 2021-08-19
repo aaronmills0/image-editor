@@ -1,4 +1,4 @@
-function autoSubmit() {
-    var form = document.getElementById("image-form");
+function autoSubmit(id) {
+    var form = document.getElementById(id);
     form.submit();
 }
