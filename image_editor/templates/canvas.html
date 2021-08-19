@@ -13,44 +13,45 @@
                     <div class="row">
                         <ul>
                             <form method="post" id="data-form">
+                                {% csrf_token %}
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Grayscale</p>
-                                    <input type="checkbox" class="form-check-input sidebar-checkbox"value="0" id="grayscale">
+                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ grayscale }}" onchange="autoSubmit('data-form');" name="grayscale" id="id_grayscale">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Sepia</p>
-                                    <input type="checkbox" class="form-check-input sidebar-checkbox"value="0" id="sepia">
+                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ sepia }}" onchange="autoSubmit('data-form');" name="sepia" id="id_sepia">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Binarize</p>
-                                    <input type="checkbox" class="form-check-input sidebar-checkbox"value="0" id="binarize">
+                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ binarize }}" onchange="autoSubmit('data-form');" name="binarize" id="id_binarize">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Smoothness</p>
-                                    <input type="range" class="form-range sidebar-range" min="0" max="6" default="0" step="1" value="0" id="smoothness">
+                                    <input type="range" class="form-range sidebar-range" min="0" max="6" step="1" value="{{ smoothness }}" onchange="autoSubmit('data-form');" name="smoothness" id="id_smoothness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Sharpness</p>
-                                    <input type="range" class="form-range sidebar-range" min="0" max="6" default="0" step="1" value="0" id="sharpness">
+                                    <input type="range" class="form-range sidebar-range" min="0" max="6" step="1" value="{{ sharpness }}" onchange="autoSubmit('data-form');" name="sharpness" id="id_sharpness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Brightness</p>
-                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" default="0" step="1" value="0" id="brightness">
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ brightness }}" onchange="autoSubmit('data-form');" name="brightness" id="id_brightness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Saturation</p>
-                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" default="0" step="1" value="0" id="saturation">
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ saturation }}" onchange="autoSubmit('data-form');" name="saturation" id="id_saturation">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Resize</p>
-                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" default="0" step="1" value="0" id="resize">
+                                    <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ resize }}" onchange="autoSubmit('data-form');" name="resize" id="id_resize">
                                 </div>
                             </form>
                         </ul>
@@ -75,7 +76,7 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <a class="btn-custom mb-3 mt-3" id="back-button" href="{% url 'upload' %}"><i class="bi-arrow-left"></i></a>
-                <a class="btn-custom mb-3 mt-3" id="download-button" href="../media/tmp/{{ name }}" download="{{name}}"><i class="bi-download"></i></a>
+                <a class="btn-custom mb-3 mt-3" id="download-button" href="../media/tmp/{{ name }}" download="{{ name }}"><i class="bi-download"></i></a>
             </div>
         </div>
     </div>

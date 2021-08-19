@@ -1,13 +1,24 @@
 from django.shortcuts import render, redirect
 from .models import Image
-from .forms import ImageForm
+from .forms import ImageForm, DataForm
 import cv2 as cv
 import numpy as np
 from PIL import Image
 import os, shutil
 from django.conf import settings
 # Create your views here.
-img_name = None;
+img_name = None
+img_copy_name = None
+temp = {
+    "grayscale": 0,
+    "sepia": 0,
+    "binarize": 0,
+    "smoothness": 0,
+    "sharpness": 0,
+    "brightness": 0,
+    "saturation": 0,
+    "resize": 0
+}
 
 def clear_tmp():
     folder = settings.MEDIA_ROOT + 'tmp'
@@ -22,9 +33,11 @@ def clear_tmp():
             print("Failed to clear /tmp: {}".format(e))
 
 def copy_img(name):
+    global img_copy_name
     folder = settings.MEDIA_ROOT + 'tmp'
     index = str(name).find('.')
     new_name = str(name)[:index] + '_copy' + str(name)[index:]
+    img_copy_name = new_name
     print("New name: {}".format(new_name))
     try:
         original = os.path.join(folder, str(name))
@@ -55,8 +68,53 @@ def image_upload(request):
         form = ImageForm()
     return render(request, template_name, {'form': form})
 
+def fill_form(form):
+    form.cleaned_data["grayscale"] = temp.get("grayscale")
+    form.cleaned_data["sepia"] = temp.get("sepia")
+    form.cleaned_data["binarize"] = temp.get("binarize")
+    form.cleaned_data["smoothness"] = temp.get("smoothness")
+    form.cleaned_data["sharpness"] = temp.get("sharpness")
+    form.cleaned_data["brightness"] = temp.get("brightness")
+    form.cleaned_data["saturation"] = temp.get("saturation")
+    form.cleaned_data["resize"] = temp.get("resize")
 
 def canvas(request):
+    global temp
     template_name = 'canvas.html'
     print('Name: {}'.format(img_name))
-    return render(request, template_name, {'name': img_name})
+    if request.method == 'POST':
+        form = DataForm(request.POST)
+        if form.is_valid():
+            data = {}
+            data.update({"grayscale": form.cleaned_data.get("grayscale")})
+            data.update({"sepia": form.cleaned_data.get("sepia")})
+            data.update({"binarize": form.cleaned_data.get("binarize")})
+            data.update({"smoothness": form.cleaned_data.get("smoothness")})
+            data.update({"sharpness": form.cleaned_data.get("sharpness")})
+            data.update({"brightness": form.cleaned_data.get("brightness")})
+            data.update({"saturation": form.cleaned_data.get("saturation")})
+            data.update({"resize": form.cleaned_data.get("resize")})
+            temp = data.copy()
+            print("Data: {}".format(data))
+            print("Temp: {}".format(temp))
+            # perform necessary operations on the image
+        else: 
+            print("Invalid form")
+    else:
+        print("Form: {}".format(temp))
+        form = DataForm()
+        #fill_form(form)
+    res = {
+        'name': img_name, 
+        'form': form, 
+        'grayscale': temp.get('grayscale'),
+        'sepia': temp.get('sepia'),
+        'binarize': temp.get('binarize'),
+        'smoothness': temp.get('smoothness'),
+        'sharpness': temp.get('sharpness'),
+        'brightness': temp.get('brightness'),
+        'saturation': temp.get('saturation'),
+        'resize': temp.get('resize')
+        }
+    print("Res: {}".format(res))
+    return render(request, template_name, res)
