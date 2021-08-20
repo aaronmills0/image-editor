@@ -16,6 +16,12 @@ class Editor():
             return False
         return True
 
+    def horizontal_flip(self):
+        self.img = cv.flip(self.img, 1)
+    
+    def vertical_flip(self):
+        self.img = cv.flip(self.img, 0)
+
     def grayscale(self):
         if not self.isGray():
             self.img = cv.cvtColor(self.img, cv.COLOR_BGR2GRAY)
@@ -75,6 +81,10 @@ class Editor():
         self.img = cv.resize(self.img, dim, interpolation=cv.INTER_AREA)
 
     def update(self):
+        if self.data.get('horizontal_flip') == 1:
+            self.horizontal_flip()
+        if self.data.get('vertical_flip') == 1:
+            self.vertical_flip()
         if self.data.get('grayscale') == 1:
             self.grayscale()
         if self.data.get('sepia') == 1:

@@ -15,6 +15,16 @@
                             <form method="post" id="data-form">
                                 {% csrf_token %}
                                 <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Horizontal Flip</p>
+                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ horizontal_flip }}" onchange="autoSubmit('data-form');refreshImage();" name="horizontal_flip" id="id_horizontal_flip">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
+                                    <p class="secondary-title sidebar-title">Vertical Flip</p>
+                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ vertical_flip }}" onchange="autoSubmit('data-form');refreshImage();" name="vertical_flip" id="id_vertical_flip">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Grayscale</p>
                                     <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ grayscale }}" onchange="autoSubmit('data-form');refreshImage();" name="grayscale" id="id_grayscale">
                                 </div>

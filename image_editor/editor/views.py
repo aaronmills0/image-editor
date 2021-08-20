@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Image
-from .forms import ImageForm, DataForm
+from .forms import ImageForm, DataForm, FeedbackForm
 import cv2 as cv
 import numpy as np
 from PIL import Image
@@ -35,6 +35,8 @@ def clear_tmp():
         except Exception as e:
             print("Failed to clear /tmp: {}".format(e))
     temp = {
+        "horizontal_flip": 0,
+        "vertical_flip": 0,
         "grayscale": 0,
         "sepia": 0,
         "binarize": 0,
@@ -73,7 +75,6 @@ def image_upload(request):
             img = form.save(commit=False)
             print(form)
             print(img)
-            img.save()
             img_name = form.cleaned_data.get('image')
             copy_img(img_name)
             print(img_name)
@@ -90,6 +91,8 @@ def canvas(request):
         form = DataForm(request.POST)
         if form.is_valid():
             data = {}
+            data.update({"horizontal_flip": form.cleaned_data.get("horizontal_flip")})
+            data.update({"vertical_flip": form.cleaned_data.get("vertical_flip")})
             data.update({"grayscale": form.cleaned_data.get("grayscale")})
             data.update({"sepia": form.cleaned_data.get("sepia")})
             data.update({"binarize": form.cleaned_data.get("binarize")})
@@ -111,7 +114,9 @@ def canvas(request):
         form = DataForm()
     res = {
         'name': img_name, 
-        'form': form, 
+        'form': form,
+        'horizontal_flip': temp.get('horizontal_flip'),
+        'vertical_flip': temp.get('vertical_flip'),
         'grayscale': temp.get('grayscale'),
         'sepia': temp.get('sepia'),
         'binarize': temp.get('binarize'),
@@ -124,3 +129,16 @@ def canvas(request):
         }
     print("Res: {}".format(res))
     return render(request, template_name, res)
+
+def feedback(request):
+    template_name = 'feedback.html'
+    new_feedback = None
+    if request.method == 'POST':
+        feedback_form = FeedbackForm(data=request.POST)
+        if feedback_form.is_valid():
+            new_feedback = feedback_form.save(commit=False)
+            new_feedback.save()
+    else:
+        feedback_form = FeedbackForm()
+    
+    return render(request, template_name, {'form': feedback_form, 'new_feedback': new_feedback})

@@ -3,5 +3,6 @@ from django.urls import path
 
 urlpatterns = [
     path('', views.image_upload, name='upload'),
-    path('canvas/', views.canvas, name='canvas')
+    path('canvas/', views.canvas, name='canvas'),
+    path('feedback/', views.feedback, name='feedback')
 ]

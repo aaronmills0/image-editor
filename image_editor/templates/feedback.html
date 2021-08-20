@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<body>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10 text-center my-auto">
+            <div class="container card upload-card align-items-center justify-content-center">
+                {% if new_feedback %}
+                <div class="alert alert-success mt-3" role="alert">
+                    Thank you for your feedback!
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col">
+                        <a class="btn-custom mb-3 mt-3 submit-back" id="form-back-button" href="{% url 'upload' %}"><i class="bi-arrow-left"></i></a>
+                    </div>
+                </div>
+                {% else %}
+                <form method="post">
+                    {{ form | crispy }}
+                    {% csrf_token %}
+                    <div class="row d-flex justify-content-center">
+                        <div class="col">
+                            <a class="btn-custom mb-3 mt-3 submit-back" id="form-back-button" href="{% url 'upload' %}"><i class="bi-arrow-left"></i></a>
+                            <button type="submit" class="btn-custom mb-3 mt-3 submit-form"><i class="bi-check"></i></button>
+                        </div>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock content %}

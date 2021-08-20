@@ -17,14 +17,22 @@
         {% endblock content %}
         <div class="top-padding-small"></div>
         <footer>
-          <nav class="navbar navbar-footer">
-              <div class="row d-flex justify-content-center">
-                <div class="col-md-12 text-center">
-                  <div class="container-fluid align-items-center justify-content-center">
-                    <p class="copyright-text">© Copyright 2021</p>
-                  </div>
+          <nav class="navbar navbar-footer flex-column">
+            <div class="top-padding-small"></div>
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-12 text-center">
+                <div class="container-fluid align-items-center justify-content-center">
+                  <a class="feedback-text" href="{% url 'feedback' %}">Feedback or Suggestion?</p>
                 </div>
               </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-12 text-center">
+                <div class="container-fluid align-items-center justify-content-center">
+                  <p class="copyright-text">© Copyright 2021</p>
+                </div>
+              </div>
+            </div>
           </nav>
         </footer>
     </body>
