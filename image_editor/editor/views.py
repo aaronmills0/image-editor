@@ -10,13 +10,18 @@ from .editor import Editor
 img_name = None
 img_copy_name = None
 temp = {
+    "horizontal_flip": 0,
+    "vertical_flip": 0,
     "grayscale": 0,
     "sepia": 0,
     "binarize": 0,
+    "histogram_equalize": 0,
+    "invert": 0,
     "smoothness": 0,
     "sharpness": 0,
     "brightness": 0,
     "contrast": 0,
+    "gamma_correction": 10,
     "saturation": 0,
     "resize": 0
 }
@@ -39,10 +44,13 @@ def clear_tmp():
         "grayscale": 0,
         "sepia": 0,
         "binarize": 0,
+        "histogram_equalize": 0,
+        "invert": 0,
         "smoothness": 0,
         "sharpness": 0,
         "brightness": 0,
-        "contrast": 0,
+        "contrast": 10,
+        "gamma_correction": 10,
         "saturation": 0,
         "resize": 0
     }
@@ -97,10 +105,13 @@ def canvas(request):
             data.update({"grayscale": form.cleaned_data.get("grayscale")})
             data.update({"sepia": form.cleaned_data.get("sepia")})
             data.update({"binarize": form.cleaned_data.get("binarize")})
+            data.update({"histogram_equalize": form.cleaned_data.get("histogram_equalize")})
+            data.update({"invert": form.cleaned_data.get("invert")})
             data.update({"smoothness": form.cleaned_data.get("smoothness")})
             data.update({"sharpness": form.cleaned_data.get("sharpness")})
             data.update({"brightness": form.cleaned_data.get("brightness")})
             data.update({"contrast": form.cleaned_data.get("contrast")})
+            data.update({"gamma_correction": form.cleaned_data.get("gamma_correction")})
             data.update({"saturation": form.cleaned_data.get("saturation")})
             data.update({"resize": form.cleaned_data.get("resize")})
             temp = data.copy()
@@ -121,10 +132,13 @@ def canvas(request):
         'grayscale': temp.get('grayscale'),
         'sepia': temp.get('sepia'),
         'binarize': temp.get('binarize'),
+        'histogram_equalize': temp.get('histogram_equalize'),
+        'invert': temp.get('invert'),
         'smoothness': temp.get('smoothness'),
         'sharpness': temp.get('sharpness'),
         'brightness': temp.get('brightness'),
         'contrast': temp.get('contrast'),
+        'gamma_correction': temp.get('gamma_correction'),
         'saturation': temp.get('saturation'),
         'resize': temp.get('resize')
         }
