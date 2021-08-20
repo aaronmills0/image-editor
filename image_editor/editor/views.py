@@ -75,6 +75,7 @@ def image_upload(request):
             img = form.save(commit=False)
             print(form)
             print(img)
+            img.save()
             img_name = form.cleaned_data.get('image')
             copy_img(img_name)
             print(img_name)
