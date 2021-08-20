@@ -3,7 +3,6 @@ from .models import Image
 from .forms import ImageForm, DataForm, FeedbackForm
 import cv2 as cv
 import numpy as np
-from PIL import Image
 import os, shutil
 from django.conf import settings
 from .editor import Editor
@@ -47,6 +46,7 @@ def clear_tmp():
         "saturation": 0,
         "resize": 0
     }
+    Image.objects.all().delete()
 
 def copy_img(name):
     global img_copy_name

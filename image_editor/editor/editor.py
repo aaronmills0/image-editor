@@ -32,8 +32,11 @@ class Editor():
                 [0.272, 0.534, 0.131],
                 [0.349, 0.686, 0.168], 
                 [0.393, 0.769, 0.189]
-                ])
-            self.img = cv.filter2D(self.img, -1, kernel)    
+                ], dtype=np.float64)
+            self.img = np.array(self.img, dtype=np.float64)
+            self.img = cv.transform(self.img, kernel)  
+            self.img[np.where(self.img > 255)] = 255
+            self.img = np.array(self.img, dtype=np.uint8)
     
     def binarize(self):
         if not self.isGray():
@@ -46,11 +49,15 @@ class Editor():
     
     def sharpness(self, val):
         if val > 0:
-            kernel = np.array([
+            kernel = np.add(np.array([
+                [0, 0, 0,],
+                [0, 1, 0],
+                [0, 0, 0]]),
+                np.array([
                 [-1, -1, -1],
-                [-1, 2*val-1, -1],
+                [-1, 4, -1],
                 [-1, -1, -1]
-                ])
+                ])*(1))
             self.img = cv.filter2D(self.img, -1, kernel)
     
     def brightness(self, val):

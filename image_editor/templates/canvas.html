@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <body>
-    <div id="sidebar" class="sidenav" style="left: -250px;">
+    <div id="sidebar" class="sidenav">
         <div class="sidebar-option">
             <div class="row">
                 <div class="col mt-1 mb-3">
@@ -14,34 +14,49 @@
                         <ul>
                             <form method="post" id="data-form">
                                 {% csrf_token %}
-                                <div class="card sidebar-card">
+                                <div class="card sidebar-card slider-card align-items-center" onclick="toggleSlider('id_horizontal_flip');autoSubmit('data-form');refreshImage();">
                                     <p class="secondary-title sidebar-title">Horizontal Flip</p>
-                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ horizontal_flip }}" onchange="autoSubmit('data-form');refreshImage();" name="horizontal_flip" id="id_horizontal_flip">
+                                    <label class="switch"> 
+                                        <input type="switch" value="{{ horizontal_flip }}" onclick="toggleSlider('id_horizontal_flip');autoSubmit('data-form');refreshImage();" name="horizontal_flip" id="id_horizontal_flip">
+                                        <span class="slider" id="id_horizontal_flip_slider"></span>
+                                    </label>
                                 </div>
                                 <div class="side-padding"></div>
-                                <div class="card sidebar-card">
+                                <div class="card sidebar-card slider-card align-items-center" onclick="toggleSlider('id_vertical_flip');autoSubmit('data-form');refreshImage();">
                                     <p class="secondary-title sidebar-title">Vertical Flip</p>
-                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ vertical_flip }}" onchange="autoSubmit('data-form');refreshImage();" name="vertical_flip" id="id_vertical_flip">
+                                    <label class="switch"> 
+                                        <input type="switch" value="{{ vertical_flip }}" onclick="toggleSlider('id_vertical_flip');autoSubmit('data-form');refreshImage();" name="vertical_flip" id="id_vertical_flip">
+                                        <span class="slider" id="id_vertical_flip_slider"></span>
+                                    </label>
                                 </div>
                                 <div class="side-padding"></div>
-                                <div class="card sidebar-card">
+                                <div class="card sidebar-card slider-card align-items-center" onclick="toggleSlider('id_grayscale');autoSubmit('data-form');refreshImage();">
                                     <p class="secondary-title sidebar-title">Grayscale</p>
-                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ grayscale }}" onchange="autoSubmit('data-form');refreshImage();" name="grayscale" id="id_grayscale">
+                                    <label class="switch"> 
+                                        <input type="switch" value="{{ grayscale }}" onclick="toggleSlider('id_grayscale');autoSubmit('data-form');refreshImage();" name="grayscale" id="id_grayscale">
+                                        <span class="slider" id="id_grayscale_slider"></span>
+                                    </label>
                                 </div>
                                 <div class="side-padding"></div>
-                                <div class="card sidebar-card">
+                                <div class="card sidebar-card slider-card align-items-center" onclick="toggleSlider('id_sepia');autoSubmit('data-form');refreshImage();">
                                     <p class="secondary-title sidebar-title">Sepia</p>
-                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ sepia }}" onchange="autoSubmit('data-form');refreshImage();" name="sepia" id="id_sepia">
+                                    <label class="switch"> 
+                                        <input type="switch" value="{{ sepia }}" onclick="toggleSlider('id_sepia');autoSubmit('data-form');refreshImage();" name="sepia" id="id_sepia">
+                                        <span class="slider" id="id_sepia_slider"></span>
+                                    </label>
                                 </div>
                                 <div class="side-padding"></div>
-                                <div class="card sidebar-card">
+                                <div class="card sidebar-card slider-card align-items-center" onclick="toggleSlider('id_binarize');autoSubmit('data-form');refreshImage();">
                                     <p class="secondary-title sidebar-title">Binarize</p>
-                                    <input type="range" class="form-range sidebar-slider" min="0" max="1" step="1" value="{{ binarize }}" onchange="autoSubmit('data-form');refreshImage();" name="binarize" id="id_binarize">
+                                    <label class="switch"> 
+                                        <input type="switch" value="{{ binarize }}" onclick="toggleSlider('id_binarize');autoSubmit('data-form');refreshImage();" name="binarize" id="id_binarize">
+                                        <span class="slider" id="id_binarize_slider"></span>
+                                    </label>
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
                                     <p class="secondary-title sidebar-title">Smoothness</p>
-                                    <input type="range" class="form-range sidebar-range" min="0" max="6" step="1" value="{{ smoothness }}" onchange="autoSubmit('data-form');refreshImage();" name="smoothness" id="id_smoothness">
+                                    <input type="range" class="form-range sidebar-range" min="0" max="32" step="1" value="{{ smoothness }}" onchange="autoSubmit('data-form');refreshImage();" name="smoothness" id="id_smoothness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">

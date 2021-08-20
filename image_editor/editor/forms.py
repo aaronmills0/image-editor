@@ -1,6 +1,6 @@
 from django import forms
 from .models import Image, Feedback
-from django.forms.widgets import RangeInput
+from django.forms.widgets import RangeInput, SwitchInput
 
 class ImageForm(forms.ModelForm):
     class Meta:
@@ -13,11 +13,11 @@ class FeedbackForm(forms.ModelForm):
         fields = ('name', 'email', 'body')
 
 class DataForm(forms.Form):
-    horizontal_flip = forms.IntegerField(widget=RangeInput)
-    vertical_flip = forms.IntegerField(widget=RangeInput)
-    grayscale = forms.IntegerField(widget=RangeInput)
-    sepia = forms.IntegerField(widget=RangeInput)
-    binarize = forms.IntegerField(widget=RangeInput)
+    horizontal_flip = forms.IntegerField(widget=SwitchInput)
+    vertical_flip = forms.IntegerField(widget=SwitchInput)
+    grayscale = forms.IntegerField(widget=SwitchInput)
+    sepia = forms.IntegerField(widget=SwitchInput)
+    binarize = forms.IntegerField(widget=SwitchInput)
     smoothness = forms.IntegerField(widget=RangeInput)
     sharpness = forms.IntegerField(widget=RangeInput)
     brightness = forms.IntegerField(widget=RangeInput)
