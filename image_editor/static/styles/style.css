@@ -20,6 +20,11 @@ body {
     font-size: 18px;
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 .top-padding {
     padding: 3vh;
 }
