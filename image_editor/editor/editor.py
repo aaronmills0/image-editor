@@ -118,8 +118,8 @@ class Editor():
             hsv_color = cv.cvtColor(c, cv.COLOR_BGR2HSV)
             h = hsv_color[0][0][0]
 
-            upper = np.array([h+10, 255, 255])
-            lower = np.array([h-10, 100, 100])
+            upper = np.array([h+25, 255, 255])
+            lower = np.array([h-25, 50, 50])
 
             hsv = cv.cvtColor(self.img, cv.COLOR_BGR2HSV)
             gray = cv.cvtColor(self.img, cv.COLOR_BGR2GRAY)

@@ -112,7 +112,7 @@
                                             <input type="switch" value="{{ color_pop_bool }}" onclick="toggleSlider('id_color_pop_bool');autoSubmit('data-form');" onchange="refreshImage();" name="color_pop_bool" id="id_color_pop_bool">
                                             <span class="slider" id="id_vertical_flip_slider"></span>
                                         </label>
-                                        <label for="id_color_pop_color" class="color-picker"><i class="bi-eyedropper" id="id_bi_eyedropper" onload="setupPicker();setColor();"></i></label>
+                                        <label for="id_color_pop_color" class="color-picker"><i class="bi-eyedropper" id="id_bi_eyedropper" onload="setupPicker();setColor();" onchange="refreshImage();"></i></label>
                                         <input type="color" value="{{ color_pop_color }}" name="color_pop_color" id="id_color_pop_color" onchange="setColor();">
                                     </div>
                                 </div>
