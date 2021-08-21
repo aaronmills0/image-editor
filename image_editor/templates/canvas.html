@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<body onchange="refreshImage();" onload="setColor();">
+<body onchange="refreshImage();" onload="sidebarScroll();setColor();">
     <div id="sidebar" class="sidenav">
         <div class="sidebar-option">
             <div class="row">
                 <div class="col mt-1 mb-3">
-                    <button class="btn-custom-circle-sidebar sidebar-close" type="button" id="sidebarClose" onclick="closeNav()"><i class="sidebar-close-icon bi-x-lg"></i></button>
+                    <button class="btn-custom-circle-sidebar sidebar-reset" type="button" id="sidebarClose" onclick="resetAll();autoSubmit('data-form');"><i class="sidebar-reset-icon bi-arrow-counterclockwise"></i></button>
+                    <button class="btn-custom-circle-sidebar sidebar-close" type="button" id="sidebarClose" onclick="closeNav();"><i class="sidebar-close-icon bi-x-lg"></i></button>
                 </div>
+                <div class="top-padding-small"></div>
             </div>
             <div class="row ml-0">
                 <div class="col-md-7 mb-3 mt-3">
@@ -14,7 +16,7 @@
                         <ul>
                             <form method="post" id="data-form">
                                 {% csrf_token %}
-                                <div class="card sidebar-card slider-card align-items-center" onclick="toggleSlider('id_horizontal_flip');autoSubmit('data-form');">
+                                <div class="card sidebar-card slider-card align-items-center mt-3" onclick="toggleSlider('id_horizontal_flip');autoSubmit('data-form');">
                                     <p class="secondary-title sidebar-title">Horizontal Flip</p>
                                     <label class="switch"> 
                                         <input type="switch" value="{{ horizontal_flip }}" onclick="toggleSlider('id_horizontal_flip');autoSubmit('data-form');" onchange="refreshImage();" name="horizontal_flip" id="id_horizontal_flip">
@@ -71,42 +73,50 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_smoothness');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Smoothness</p>
                                     <input type="range" class="form-range sidebar-range" min="0" max="32" step="1" value="{{ smoothness }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="smoothness" id="id_smoothness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_sharpness');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Sharpness</p>
                                     <input type="range" class="form-range sidebar-range" min="0" max="8" step="1" value="{{ sharpness }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="sharpness" id="id_sharpness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_brightness');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Brightness</p>
                                     <input type="range" class="form-range sidebar-range" min="-12" max="12" step="1" value="{{ brightness }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="brightness" id="id_brightness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_contrast');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Contrast</p>
                                     <input type="range" class="form-range sidebar-range" min="1" max="19" step="1" value="{{ contrast }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="contrast" id="id_contrast">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_gamma_correction');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Gamma</p>
                                     <input type="range" class="form-range sidebar-range" min="1" max="19" step="1" value="{{ gamma_correction }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="gamma_correction" id="id_gamma_correction">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_saturation');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Saturation</p>
                                     <input type="range" class="form-range sidebar-range" min="1" max="19" step="1" value="{{ saturation }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="saturation" id="id_saturation">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_resize');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Resize</p>
                                     <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ resize }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="resize" id="id_resize">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card slider-card color-pop-card align-items-center">
                                     <p class="secondary-title sidebar-title">Color Pop</p>
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_color_pop_color');resetFilter('id_color_pop_bool');autoSubmit('data-form');"></i>
                                     <div class="row d-flex justify-content-center">
                                         <label class="switch"> 
                                             <input type="switch" value="{{ color_pop_bool }}" onclick="toggleSlider('id_color_pop_bool');autoSubmit('data-form');" onchange="refreshImage();" name="color_pop_bool" id="id_color_pop_bool">

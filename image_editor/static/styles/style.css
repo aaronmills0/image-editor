@@ -365,8 +365,21 @@ label {
 }
 
 .sidebar-close {
-    position: relative;
-    left: 128px;
+    position: absolute;
+    left: 158px;
+    top: 18px;
+    margin-bottom: 30px;
+}
+
+.sidebar-reset {
+    position: absolute;
+    left: 20px;
+    top: 18px;
+    margin-bottom: 30px;
+}
+
+.sidebar-reset-icon {
+    font-size: 28px;
 }
 
 .sidebar-title {
@@ -527,3 +540,14 @@ input[type="color"] {
     cursor: pointer;
 }
 
+.reset-button {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    padding: 0;
+    max-height: 16px;
+    max-width: 16px;
+}
