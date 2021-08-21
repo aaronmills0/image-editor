@@ -246,6 +246,11 @@ input[type="file"] {
     width: 188px;
 }
 
+.color-pop-card {
+    height: 150px;
+    cursor: default;
+}
+
 .navbar-footer {
     font-family: var(--title-font);
     background-color: var(--secondary-color);
@@ -494,7 +499,7 @@ textarea {
     content: "";
     top: 1px;
     height: 20px;
-    left: 2px;
+    left: 1px;
     border-radius: 50%;
     position: absolute;
     width: 20px;
@@ -503,3 +508,17 @@ textarea {
 input[value="1"] + .slider:before {
     transform: translateX(18px);
 }
+
+input[type="color"] {
+    opacity: 0;
+}
+
+.bi-eyedropper {
+    position: absolute;
+    left: 78px;
+    bottom: 2px;
+    font-size: 30px;
+    align-self: center;
+    cursor: pointer;
+}
+

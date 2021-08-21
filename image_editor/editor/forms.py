@@ -1,6 +1,7 @@
 from django import forms
 from .models import Image, Feedback
 from django.forms.widgets import RangeInput, SwitchInput
+from colorfield.widgets import ColorWidget
 
 class ImageForm(forms.ModelForm):
     class Meta:
@@ -27,3 +28,5 @@ class DataForm(forms.Form):
     gamma_correction = forms.IntegerField(widget=RangeInput)
     saturation = forms.IntegerField(widget=RangeInput)
     resize = forms.IntegerField(widget=RangeInput)
+    color_pop_bool = forms.IntegerField(widget=SwitchInput)
+    color_pop_color = forms.CharField(widget=ColorWidget)

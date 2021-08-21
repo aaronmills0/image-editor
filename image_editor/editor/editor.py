@@ -87,15 +87,55 @@ class Editor():
     def saturation(self, val):
         if val != 0 and not self.isGray():
             self.img = cv.cvtColor(self.img, cv.COLOR_BGR2HSV)
-            for y in range(self.img.shape[0]):
-                for x in range(self.img.shape[1]):
-                    self.img[y, x, 1] = np.clip(self.img[y, x, 1] + 20*val, 0, 255)
+            h, s, v = cv.split(self.img)
+            a = val/10.0
+            s = cv.convertScaleAbs(s, alpha=a, beta=0)
+            s = np.clip(s, 0, 255)
+            self.img = cv.merge((h,s,v))
             self.img = cv.cvtColor(self.img, cv.COLOR_HSV2BGR)
-    
+
     def resize(self, val):
         ratio = 1.0 + 0.1*val
         dim = (int(self.img.shape[1]*ratio), int(self.img.shape[0]*ratio))
         self.img = cv.resize(self.img, dim, interpolation=cv.INTER_AREA)
+
+    def toRGB(self, color):
+        b_hex = color[-2:]
+        g_hex = color[-4:-2]
+        r_hex = color[-6:-4]
+        
+        b = int(b_hex, 16)
+        g = int(g_hex, 16)
+        r = int(r_hex, 16)
+
+        return (r, g, b)
+
+    def color_pop_color(self, color):
+        if not self.isGray():
+            r, g, b = self.toRGB(color)
+            print("r {} g {} b {}".format(r,g,b))
+            c = np.uint8([[[b, g, r]]])
+            hsv_color = cv.cvtColor(c, cv.COLOR_BGR2HSV)
+            h = hsv_color[0][0][0]
+
+            upper = np.array([h+10, 255, 255])
+            lower = np.array([h-10, 100, 100])
+
+            hsv = cv.cvtColor(self.img, cv.COLOR_BGR2HSV)
+            gray = cv.cvtColor(self.img, cv.COLOR_BGR2GRAY)
+
+            mask = cv.inRange(hsv, lower, upper)
+
+            mask_inv = cv.bitwise_not(mask)
+
+            color = cv.bitwise_and(self.img, self.img, mask=mask)
+
+            background = cv.bitwise_and(gray, gray, mask=mask_inv)
+
+            background = np.stack((background,)*3, axis=-1)
+
+            self.img = cv.add(color, background)
+
 
     def update(self):
         if self.data.get('horizontal_flip') == 1:
@@ -119,6 +159,8 @@ class Editor():
         self.gamma_correction(self.data.get('gamma_correction'))
         self.saturation(self.data.get('saturation'))
         self.resize(self.data.get('resize'))
+        if self.data.get('color_pop_bool') == 1:
+            self.color_pop_color(self.data.get('color_pop_color'))
         print(os.listdir(self.folder)[0])
         #cv.imshow('img', self.img)
         #cv.waitKey(0)

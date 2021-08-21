@@ -23,7 +23,9 @@ temp = {
     "contrast": 0,
     "gamma_correction": 10,
     "saturation": 0,
-    "resize": 0
+    "resize": 0,
+    "color_pop_bool": 0,
+    "color_pop_color": "#ff0946"
 }
 
 def clear_tmp():
@@ -51,8 +53,10 @@ def clear_tmp():
         "brightness": 0,
         "contrast": 10,
         "gamma_correction": 10,
-        "saturation": 0,
-        "resize": 0
+        "saturation": 10,
+        "resize": 0,
+        "color_pop_bool": 0,
+        "color_pop_color": "#ff0946"
     }
     Image.objects.all().delete()
 
@@ -114,6 +118,8 @@ def canvas(request):
             data.update({"gamma_correction": form.cleaned_data.get("gamma_correction")})
             data.update({"saturation": form.cleaned_data.get("saturation")})
             data.update({"resize": form.cleaned_data.get("resize")})
+            data.update({"color_pop_bool": form.cleaned_data.get("color_pop_bool")})
+            data.update({"color_pop_color": form.cleaned_data.get("color_pop_color")})
             temp = data.copy()
             print("Data: {}".format(data))
             print("Temp: {}".format(temp))
@@ -140,7 +146,9 @@ def canvas(request):
         'contrast': temp.get('contrast'),
         'gamma_correction': temp.get('gamma_correction'),
         'saturation': temp.get('saturation'),
-        'resize': temp.get('resize')
+        'resize': temp.get('resize'),
+        'color_pop_bool': temp.get('color_pop_bool'),
+        'color_pop_color': temp.get('color_pop_color')
         }
     print("Res: {}".format(res))
     return render(request, template_name, res)
