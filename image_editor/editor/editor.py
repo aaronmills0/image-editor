@@ -173,7 +173,10 @@ class Editor():
             by = max(y1, y2)
             w = bx - tx
             h = by - ty
-            self.img = self.img[ty:by,tx:bx,:]
+            if not self.isGray():
+                self.img = self.img[ty:by,tx:bx,:]
+            else:
+                self.img = self.img[ty:by,tx:bx]
 
 
     def update(self):
