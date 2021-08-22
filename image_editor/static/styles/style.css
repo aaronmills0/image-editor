@@ -251,7 +251,7 @@ input[type="file"] {
     width: 188px;
 }
 
-.color-pop-card {
+.large-card {
     height: 150px;
     cursor: default;
 }
@@ -553,12 +553,23 @@ input[type="text"].image-data {
 .bi-eyedropper {
     position: absolute;
     left: 38px;
-    bottom: 2px;
+    bottom: 0px;
     font-size: 30px;
     align-self: center;
     cursor: pointer;
     padding: 5px;
     z-index: 10;
+}
+
+.bi-crop {
+    color: var(--primary-color);
+    position: absolute;
+    font-size: 30px;
+    left: 72px;
+    bottom: 0px;
+    cursor: pointer;
+    align-self: center;
+    padding: 5px;
 }
 
 .clicked-on {
@@ -568,7 +579,7 @@ input[type="text"].image-data {
 .bi-paint-bucket {
     position: absolute;
     left: 118px;
-    bottom: 2px;
+    bottom: 0px;
     font-size: 30px;
     align-self: center;
     cursor: pointer;

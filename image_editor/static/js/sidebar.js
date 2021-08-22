@@ -24,6 +24,9 @@ function resetFilter(id) {
     defaults.set('id_resize', "0")
     defaults.set('id_color_pop_bool', "0")
     defaults.set('id_color_pop_color', "#ff0946")
+    defaults.set('id_color_pop_data', "")
+    defaults.set('id_crop_bool', "0")
+    defaults.set('id_crop_data', "")
 
     var elem = document.getElementById(id);
     elem.value = defaults.get(id);
@@ -46,6 +49,9 @@ function resetAll() {
     document.getElementById('id_resize').value = 0;
     document.getElementById('id_color_pop_bool').value = 0;
     document.getElementById('id_color_pop_color').value = "#ff0946";
+    document.getElementById('id_color_pop_data').value = "";
+    document.getElementById('id_crop_bool').value = 0;
+    document.getElementById('id_crop_data').value = "";
 }
 
 function sidebarScroll() {

@@ -26,7 +26,9 @@ temp = {
     "resize": 0,
     "color_pop_bool": 0,
     "color_pop_color": "#ff0946",
-    "color_pop_data": ""
+    "color_pop_data": "",
+    "crop_bool": 0,
+    "crop_data": ""
 }
 
 def clear_tmp():
@@ -58,7 +60,9 @@ def clear_tmp():
         "resize": 0,
         "color_pop_bool": 0,
         "color_pop_color": "#ff0946",
-        "color_pop_data": ""
+        "color_pop_data": "",
+        "crop_bool": 0,
+        "crop_data": ""
     }
     Image.objects.all().delete()
 
@@ -123,6 +127,8 @@ def canvas(request):
             data.update({"color_pop_bool": form.cleaned_data.get("color_pop_bool")})
             data.update({"color_pop_color": form.cleaned_data.get("color_pop_color")})
             data.update({"color_pop_data": form.cleaned_data.get("color_pop_data")})
+            data.update({"crop_bool": form.cleaned_data.get("crop_bool")})
+            data.update({"crop_data": form.cleaned_data.get("crop_data")})
             temp = data.copy()
             print("Data: {}".format(data))
             print("Temp: {}".format(temp))
@@ -152,7 +158,9 @@ def canvas(request):
         'resize': temp.get('resize'),
         'color_pop_bool': temp.get('color_pop_bool'),
         'color_pop_color': temp.get('color_pop_color'),
-        'color_pop_data': "",
+        'color_pop_data': temp.get('color_pop_data'),
+        'crop_bool': temp.get('crop_bool'),
+        'crop_data': temp.get('crop_data')
         }
     print("Res: {}".format(res))
     return render(request, template_name, res)

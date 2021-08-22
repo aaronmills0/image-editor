@@ -123,10 +123,8 @@ class Editor():
                 if h < 1 or w < 1:
                     return
                 ratio = self.img.shape[0]/h
-                x = x*ratio
-                y = y*ratio
-                x = int(x)
-                y = int(y)
+                x = int(x*ratio)
+                y = int(y*ratio)
                 b = self.img[y][x][0]
                 g = self.img[y][x][1]
                 r = self.img[y][x][2]
@@ -152,6 +150,33 @@ class Editor():
             background = np.stack((background,)*3, axis=-1)
 
             self.img = cv.add(color, background)
+    
+    def crop(self, encoded):
+        if len(encoded) > 0:
+            print(encoded)
+            data = encoded.split(':')
+            x1 = float(data[0])
+            y1 = float(data[1])
+            x2 = float(data[2])
+            y2 = float(data[3])
+            w = float(data[4])
+            h = float(data[5])
+            if h < 1 or w < 1:
+                    return
+            ratio = self.img.shape[0]/h
+            x1 = int(x1*ratio)
+            y1 = int(y1*ratio)
+            x2 = int(x2*ratio)
+            y2 = int(y2*ratio)
+            tx = min(x1, x2)
+            ty = min(y1, y2)
+            bx = max(x1, x2)
+            by = max(y1, y2)
+            w = bx - tx
+            h = by - ty
+            print("{} {} {} {} {} {}".format(tx, ty, bx, by, w, h))
+            self.img = self.img[ty:ty+h][tx:tx+w]
+
 
     def update(self):
         if self.data.get('horizontal_flip') == 1:
@@ -177,6 +202,8 @@ class Editor():
         self.resize(self.data.get('resize'))
         if self.data.get('color_pop_bool') == 1:
             self.color_pop_color(self.data.get('color_pop_color'), self.data.get('color_pop_data'))
+        if self.data.get('crop_bool') == 1:
+            self.crop(self.data.get('crop_data'))
         print(os.listdir(self.folder)[0])
         #cv.imshow('img', self.img)
         #cv.waitKey(0)
