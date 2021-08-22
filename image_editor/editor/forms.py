@@ -1,6 +1,6 @@
 from django import forms
 from .models import Image, Feedback
-from django.forms.widgets import RangeInput, SwitchInput
+from django.forms.widgets import RangeInput, SwitchInput, NumberInput
 from colorfield.widgets import ColorWidget
 
 class ImageForm(forms.ModelForm):
@@ -30,3 +30,4 @@ class DataForm(forms.Form):
     resize = forms.IntegerField(widget=RangeInput)
     color_pop_bool = forms.IntegerField(widget=SwitchInput)
     color_pop_color = forms.CharField(widget=ColorWidget)
+    color_pop_data = forms.CharField(required=False)

@@ -110,10 +110,27 @@ class Editor():
 
         return (r, g, b)
 
-    def color_pop_color(self, color):
+    def color_pop_color(self, color, encoded):
         if not self.isGray():
-            r, g, b = self.toRGB(color)
-            print("r {} g {} b {}".format(r,g,b))
+            if len(encoded) == 0:
+                r, g, b = self.toRGB(color)
+            else:
+                data = encoded.split(':')
+                x = float(data[0])
+                y = float(data[1])
+                w = float(data[2])
+                h = float(data[3])
+                if h < 1 or w < 1:
+                    return
+                ratio = self.img.shape[0]/h
+                x = x*ratio
+                y = y*ratio
+                x = int(x)
+                y = int(y)
+                b = self.img[y][x][0]
+                g = self.img[y][x][1]
+                r = self.img[y][x][2]
+
             c = np.uint8([[[b, g, r]]])
             hsv_color = cv.cvtColor(c, cv.COLOR_BGR2HSV)
             h = hsv_color[0][0][0]
@@ -135,7 +152,6 @@ class Editor():
             background = np.stack((background,)*3, axis=-1)
 
             self.img = cv.add(color, background)
-
 
     def update(self):
         if self.data.get('horizontal_flip') == 1:
@@ -160,7 +176,7 @@ class Editor():
         self.saturation(self.data.get('saturation'))
         self.resize(self.data.get('resize'))
         if self.data.get('color_pop_bool') == 1:
-            self.color_pop_color(self.data.get('color_pop_color'))
+            self.color_pop_color(self.data.get('color_pop_color'), self.data.get('color_pop_data'))
         print(os.listdir(self.folder)[0])
         #cv.imshow('img', self.img)
         #cv.waitKey(0)

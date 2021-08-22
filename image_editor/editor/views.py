@@ -25,7 +25,8 @@ temp = {
     "saturation": 0,
     "resize": 0,
     "color_pop_bool": 0,
-    "color_pop_color": "#ff0946"
+    "color_pop_color": "#ff0946",
+    "color_pop_data": ""
 }
 
 def clear_tmp():
@@ -56,7 +57,8 @@ def clear_tmp():
         "saturation": 10,
         "resize": 0,
         "color_pop_bool": 0,
-        "color_pop_color": "#ff0946"
+        "color_pop_color": "#ff0946",
+        "color_pop_data": ""
     }
     Image.objects.all().delete()
 
@@ -120,6 +122,7 @@ def canvas(request):
             data.update({"resize": form.cleaned_data.get("resize")})
             data.update({"color_pop_bool": form.cleaned_data.get("color_pop_bool")})
             data.update({"color_pop_color": form.cleaned_data.get("color_pop_color")})
+            data.update({"color_pop_data": form.cleaned_data.get("color_pop_data")})
             temp = data.copy()
             print("Data: {}".format(data))
             print("Temp: {}".format(temp))
@@ -148,7 +151,8 @@ def canvas(request):
         'saturation': temp.get('saturation'),
         'resize': temp.get('resize'),
         'color_pop_bool': temp.get('color_pop_bool'),
-        'color_pop_color': temp.get('color_pop_color')
+        'color_pop_color': temp.get('color_pop_color'),
+        'color_pop_data': "",
         }
     print("Res: {}".format(res))
     return render(request, template_name, res)
