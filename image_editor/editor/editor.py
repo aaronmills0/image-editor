@@ -125,9 +125,9 @@ class Editor():
                 ratio = self.img.shape[0]/h
                 x = int(x*ratio)
                 y = int(y*ratio)
-                b = self.img[y][x][0]
-                g = self.img[y][x][1]
-                r = self.img[y][x][2]
+                b = self.img[y, x, 0]
+                g = self.img[y, x, 1]
+                r = self.img[y, x, 2]
 
             c = np.uint8([[[b, g, r]]])
             hsv_color = cv.cvtColor(c, cv.COLOR_BGR2HSV)
@@ -153,7 +153,6 @@ class Editor():
     
     def crop(self, encoded):
         if len(encoded) > 0:
-            print(encoded)
             data = encoded.split(':')
             x1 = float(data[0])
             y1 = float(data[1])
@@ -174,8 +173,7 @@ class Editor():
             by = max(y1, y2)
             w = bx - tx
             h = by - ty
-            print("{} {} {} {} {} {}".format(tx, ty, bx, by, w, h))
-            self.img = self.img[ty:ty+h][tx:tx+w]
+            self.img = self.img[ty:by,tx:bx,:]
 
 
     def update(self):
