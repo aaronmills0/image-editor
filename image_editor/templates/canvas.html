@@ -116,7 +116,7 @@
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card slider-card large-card align-items-center">
                                     <p class="secondary-title sidebar-title">Color Pop</p>
-                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_color_pop_color');resetFilter('id_color_pop_bool');resetFilter('id_color_pop_data');autoSubmit('data-form');"></i>
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_color_pop_color');resetFilter('id_color_pop_bool');resetFilter('id_color_pop_data');resetFilter('id_color_pop_range');autoSubmit('data-form');"></i>
                                     <div class="row d-flex justify-content-center">
                                         <label class="switch"> 
                                             <input type="switch" value="{{ color_pop_bool }}" onclick="toggleSlider('id_color_pop_bool');autoSubmit('data-form');" onchange="refreshImage();" name="color_pop_bool" id="id_color_pop_bool">
@@ -124,12 +124,13 @@
                                         </label>
                                         <label for="id_color_pop_coord" class="color-picker"><i class="bi-eyedropper" id="id_bi_eyedropper" onload="setupPicker();setColor();" onchange="refreshImage();" onclick="toggle('id_bi_eyedropper');"></i></label>
                                         <input class="image-data" type="text" value="{{ color_pop_data }}" name="color_pop_data" id="id_color_pop_data">
-                                        <label for="id_color_pop_color" class="color-picker"><i class="bi-paint-bucket" id="id_bi_paint_bucket" onload="setupPicker();setColor();" onchange="resetFilter('id_color_pop_data');autoSubmit('data-form');refreshImage();"></i></label>
+                                        <label for="id_color_pop_color" class="color-picker"><i class="bi-paint-bucket" id="id_bi_paint_bucket" onload="setupPicker();setColor();" onclick="toggle('id_bi_paint_bucket');" onchange="submitColorPop();refreshImage();"></i></label>
                                         <input type="color" value="{{ color_pop_color }}" name="color_pop_color" id="id_color_pop_color" onchange="setColor();">
                                     </div>
+                                    <input type="range" class="form-range sidebar-range color-range" min="1" max="29" step="1" value="{{ color_pop_range }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="color_pop_range" id="id_color_pop_range">
                                 </div>
                                 <div class="side-padding"></div>
-                                <div class="card sidebar-card slider-card large-card align-items-center">
+                                <div class="card sidebar-card slider-card medium-card align-items-center">
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_crop_bool');resetFilter('id_crop_data');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Crop</p>
                                     <label class="switch"> 

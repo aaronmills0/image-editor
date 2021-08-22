@@ -31,5 +31,6 @@ class DataForm(forms.Form):
     color_pop_bool = forms.IntegerField(widget=SwitchInput)
     color_pop_color = forms.CharField(widget=ColorWidget)
     color_pop_data = forms.CharField(required=False)
+    color_pop_range = forms.IntegerField(widget=RangeInput)
     crop_bool = forms.IntegerField(widget=SwitchInput)
     crop_data = forms.CharField(required=False)

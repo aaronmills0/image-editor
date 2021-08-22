@@ -110,7 +110,7 @@ class Editor():
 
         return (r, g, b)
 
-    def color_pop_color(self, color, encoded):
+    def color_pop_color(self, color, encoded, boundary):
         if not self.isGray():
             if len(encoded) == 0:
                 r, g, b = self.toRGB(color)
@@ -128,18 +128,45 @@ class Editor():
                 b = self.img[y, x, 0]
                 g = self.img[y, x, 1]
                 r = self.img[y, x, 2]
+                h_r = hex(r)[2:]
+                h_g = hex(g)[2:]
+                h_b = hex(b)[2:]
+                if len(h_r) < 2:
+                    h_r = "0" + h_r
+                if len(h_g) < 2:
+                    h_g = "0" + h_g
+                if len(h_b) < 2:
+                    h_b = "0" + h_b
+                h = "#" + h_r + h_g + h_b
+                self.data.update({'color_pop_color':h})
 
             c = np.uint8([[[b, g, r]]])
             hsv_color = cv.cvtColor(c, cv.COLOR_BGR2HSV)
-            h = hsv_color[0][0][0]
-
-            upper = np.array([h+25, 255, 255])
-            lower = np.array([h-25, 50, 50])
+            h = hsv_color[0, 0, 0]
 
             hsv = cv.cvtColor(self.img, cv.COLOR_BGR2HSV)
             gray = cv.cvtColor(self.img, cv.COLOR_BGR2GRAY)
 
-            mask = cv.inRange(hsv, lower, upper)
+            s_l_bound = 70
+            v_l_bound = 50
+            if 180 - h < boundary or h < boundary:
+                if 180 - h < boundary:
+                    upper1 = np.array([h+boundary - 180, 255, 255])
+                    lower1 = np.array([0, s_l_bound, v_l_bound])
+                    upper2 = np.array([180, 255, 255])
+                    lower2 = np.array([h-boundary, s_l_bound, v_l_bound])
+                else:
+                    upper1 = np.array([h+boundary, 255, 255])
+                    lower1 = np.array([0, s_l_bound, v_l_bound])
+                    upper2 = np.array([180, 255, 255])
+                    lower2 = np.array([h-boundary + 180, s_l_bound, v_l_bound])
+                mask1 = cv.inRange(hsv, lower1, upper1)
+                mask2 = cv.inRange(hsv, lower2, upper2)
+                mask = cv.bitwise_or(mask1, mask2)
+            else:
+                upper = np.array([h+boundary, 255, 255])
+                lower = np.array([h-boundary, s_l_bound, v_l_bound])
+                mask = cv.inRange(hsv, lower, upper)
 
             mask_inv = cv.bitwise_not(mask)
 
@@ -202,7 +229,7 @@ class Editor():
         self.saturation(self.data.get('saturation'))
         self.resize(self.data.get('resize'))
         if self.data.get('color_pop_bool') == 1:
-            self.color_pop_color(self.data.get('color_pop_color'), self.data.get('color_pop_data'))
+            self.color_pop_color(self.data.get('color_pop_color'), self.data.get('color_pop_data'), self.data.get('color_pop_range'))
         if self.data.get('crop_bool') == 1:
             self.crop(self.data.get('crop_data'))
         print(os.listdir(self.folder)[0])

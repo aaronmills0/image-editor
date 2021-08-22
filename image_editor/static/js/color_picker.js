@@ -5,8 +5,14 @@ function setupPicker() {
 function setColor() {
     var elem = document.getElementById('id_color_pop_color');
     var dropper = document.getElementById('id_bi_eyedropper');
-    dropper.style.color = String(elem.value);
     var bucket = document.getElementById('id_bi_paint_bucket');
+    if (bucket.classList.contains("clicked-on")) {
+        bucket.classList.remove("clicked-on");
+        resetFilter('id_color_pop_data');
+        document.getElementById('id_color_pop_bool').value = "1";
+        autoSubmit('data-form');
+    }
+    dropper.style.color = String(elem.value);
     bucket.style.color = String(elem.value);
 }
 

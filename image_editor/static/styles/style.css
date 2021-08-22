@@ -251,8 +251,13 @@ input[type="file"] {
     width: 188px;
 }
 
-.large-card {
+.medium-card {
     height: 150px;
+    cursor: default;
+}
+
+.large-card {
+    height: 180px;
     cursor: default;
 }
 
@@ -553,7 +558,7 @@ input[type="text"].image-data {
 .bi-eyedropper {
     position: absolute;
     left: 38px;
-    bottom: 0px;
+    bottom: 24px;
     font-size: 30px;
     align-self: center;
     cursor: pointer;
@@ -561,10 +566,27 @@ input[type="text"].image-data {
     z-index: 10;
 }
 
+.bi-paint-bucket {
+    position: absolute;
+    left: 118px;
+    bottom: 24px;
+    font-size: 30px;
+    align-self: center;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 10;
+}
+
+.color-range {
+    position: absolute;
+    bottom: 12px;
+    align-self: center;
+}
+
 .bi-crop {
     color: var(--primary-color);
     position: absolute;
-    font-size: 30px;
+    font-size: 28px;
     left: 72px;
     bottom: 0px;
     cursor: pointer;
@@ -573,18 +595,7 @@ input[type="text"].image-data {
 }
 
 .clicked-on {
-    color: rgba(255,9,70,0.2) !important;
-}
-
-.bi-paint-bucket {
-    position: absolute;
-    left: 118px;
-    bottom: 0px;
-    font-size: 30px;
-    align-self: center;
-    cursor: pointer;
-    padding: 5px;
-    z-index: 10;
+    opacity: 0.2;
 }
 
 .reset-button {
