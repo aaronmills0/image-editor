@@ -7,6 +7,9 @@
     --text-font: "Montserrat";
     --title-font: "Montserrat";
     --primary-colortranslucent: rgba(255,9,70,0.2);
+    --secondary-translucent: rgba(29, 34, 46, 0.8);
+    --dark-translucent: rgba(21, 24, 32, 0.8);
+    --tertiary-translucent: rgba(43, 51, 68, 0.8);
 }
 
 html {
@@ -63,6 +66,7 @@ body {
     height: 50px;
     text-align: center;
     margin: 10px;
+    transition: 0.5s;
 }
 
 .btn-custom-circle-lg {
@@ -91,13 +95,13 @@ body {
     margin: 10px;
 }
 
-.btn-custom:hover, .btn-custom-circle:hover, .btn-custom-circle-lg:hover {
+.btn-custom:hover, .btn-custom-circle:hover, .btn-custom-circle-lg:hover, .btn-custom-circle-sidebar:hover {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     transition: 0.5s;
 }
 
-.btn-custom:active, .btn-custom-circle:active, .btn-custom-circle-lg:active {
+.btn-custom:active, .btn-custom-circle:active, .btn-custom-circle-lg:active, .btn-custom-circle-sidebar:active {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     transform: scale(1.05);
@@ -490,10 +494,6 @@ textarea {
     border: 2px solid var(--primary-color);
 }
 
-.slider-card {
-    cursor: pointer;
-}
-
 .switch {
     display: inline-block;
     height: 22px;
@@ -603,9 +603,87 @@ input[type="text"].image-data {
     cursor: pointer;
     font-size: 16px;
     position: absolute;
-    left: 2px;
-    top: 2px;
+    left: 4px;
+    top: 4px;
     padding: 0;
     max-height: 16px;
     max-width: 16px;
+}
+
+.bi-question {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 18px;
+    position: absolute;
+    left: -28px;
+    top: -10px;
+    padding: 0;
+    max-height: 16px;
+    max-width: 16px;
+    z-index: 100;
+}
+
+.help-popover {
+    color: var(--light-color);
+    background-color: var(--secondary-color);
+    position: absolute;
+    left: 100px;
+    top: 12px;
+}
+
+
+.question-reset {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 18px;
+    position: absolute;
+    left: 158px;
+    top: -10px;
+    padding: 0;
+    max-height: 16px;
+    max-width: 16px;
+    z-index: 100;
+}
+
+.help-popover-reset {
+    color: var(--light-color);
+    background-color: var(--secondary-color);
+    position: absolute;
+    left: 7px;
+    top: 12px;
+}
+
+
+
+
+
+.popover {
+    background-color: var(--tertiary-translucent);
+    font-family: var(--title-font);
+    box-shadow: none;
+    outline: none;
+    border: none;
+    border-width: 1.5px;
+    border-radius: 15px;
+}
+
+.popover .popover-arrow::before, .popover .popover-arrow::after {
+    border-color: var(--tertiary-translucent);
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    left: 0.5px
+}
+
+.popover-header {
+    color: var(--light-color);
+    background-color: var(--dark-translucent);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.popover-body {
+    background-color: var(--tertiary-translucent);
+    color: var(--light-color);
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }

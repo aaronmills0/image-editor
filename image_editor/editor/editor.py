@@ -230,8 +230,6 @@ class Editor():
             self.grayscale()
         if self.data.get('sepia') == 1:
             self.sepia()
-        if self.data.get('binarize') == 1:
-            self.binarize()
         if self.data.get('histogram_equalize') == 1:
             self.histogram_equalize()
         if self.data.get('invert') == 1:
@@ -248,6 +246,8 @@ class Editor():
             self.color_pop_color(self.data.get('color_pop_color'), self.data.get('color_pop_data'), self.data.get('color_pop_range'))
         if self.data.get('crop_bool') == 1:
             self.crop(self.data.get('crop_data'))
+        if self.data.get('binarize') == 1:
+            self.binarize()
         print(os.listdir(self.folder)[0])
         #cv.imshow('img', self.img)
         #cv.waitKey(0)
