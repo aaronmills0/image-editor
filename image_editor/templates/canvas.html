@@ -109,6 +109,12 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
+                                    <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_temperature');autoSubmit('data-form');"></i>
+                                    <p class="secondary-title sidebar-title">Temperature</p>
+                                    <input type="range" class="form-range sidebar-range" min="-20" max="20" step="1" value="{{ temperature }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="temperature" id="id_temperature">
+                                </div>
+                                <div class="side-padding"></div>
+                                <div class="card sidebar-card">
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_resize');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Resize</p>
                                     <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ resize }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="resize" id="id_resize">

@@ -27,6 +27,7 @@ class DataForm(forms.Form):
     contrast = forms.IntegerField(widget=RangeInput)
     gamma_correction = forms.IntegerField(widget=RangeInput)
     saturation = forms.IntegerField(widget=RangeInput)
+    temperature = forms.IntegerField(widget=RangeInput)
     resize = forms.IntegerField(widget=RangeInput)
     color_pop_bool = forms.IntegerField(widget=SwitchInput)
     color_pop_color = forms.CharField(widget=ColorWidget)

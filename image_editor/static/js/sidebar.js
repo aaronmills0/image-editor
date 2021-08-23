@@ -21,6 +21,7 @@ function resetFilter(id) {
     defaults.set('id_contrast', "10");
     defaults.set('id_gamma_correction', "10");
     defaults.set('id_saturation', "10");
+    defaults.set('id_temperature', "0");
     defaults.set('id_resize', "0");
     defaults.set('id_color_pop_bool', "0");
     defaults.set('id_color_pop_color', "#ff0946");
@@ -48,6 +49,7 @@ function resetAll() {
     document.getElementById('id_contrast').value = "10";
     document.getElementById('id_gamma_correction').value = "10";
     document.getElementById('id_saturation').value = "10";
+    document.getElementById('id_temperature').value = "0";
     document.getElementById('id_resize').value = "0";
     document.getElementById('id_color_pop_bool').value = "0";
     document.getElementById('id_color_pop_color').value = "#ff0946";

@@ -93,6 +93,21 @@ class Editor():
             s = np.clip(s, 0, 255)
             self.img = cv.merge((h,s,v))
             self.img = cv.cvtColor(self.img, cv.COLOR_HSV2BGR)
+    
+    def temperature(self, val):
+        if val != 0 and not self.isGray():
+            self.img = cv.cvtColor(self.img, cv.COLOR_BGR2YUV)
+            y, u, v = cv.split(self.img)
+            if val > 0:
+                a = (1 + val/100.0)
+                v = cv.convertScaleAbs(v, alpha=a, beta=0)
+                v = np.clip(v, 0, 255)
+            else:
+                a = (1 - val/100.0)
+                u = cv.convertScaleAbs(u, alpha=a, beta=0)
+                u = np.clip(u, 0, 255)
+            self.img = cv.merge((y,u,v))
+            self.img = cv.cvtColor(self.img, cv.COLOR_YUV2BGR)
 
     def resize(self, val):
         ratio = 1.0 + 0.1*val
@@ -227,6 +242,7 @@ class Editor():
         self.contrast(self.data.get('contrast'))
         self.gamma_correction(self.data.get('gamma_correction'))
         self.saturation(self.data.get('saturation'))
+        self.temperature(self.data.get('temperature'))
         self.resize(self.data.get('resize'))
         if self.data.get('color_pop_bool') == 1:
             self.color_pop_color(self.data.get('color_pop_color'), self.data.get('color_pop_data'), self.data.get('color_pop_range'))
