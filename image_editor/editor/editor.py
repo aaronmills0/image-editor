@@ -204,9 +204,7 @@ class Editor():
                 y2 = float(data[3])
                 w = float(data[4])
                 h = float(data[5])
-                if h < 10 or w < 10:
-                    return
-                if abs(x1-x2) < 10 or abs(y1-y2) < 10:
+                if h < 28 or w < 28:
                     return
                 ratio = self.img.shape[0]/h
                 x1 = int(x1*ratio)
@@ -217,8 +215,8 @@ class Editor():
                 ty = min(y1, y2)
                 bx = max(x1, x2)
                 by = max(y1, y2)
-                w = bx - tx
-                h = by - ty
+                if by-ty < 28 or bx-tx < 28:
+                    return
                 if not self.isGray():
                     self.img = self.img[ty:by,tx:bx,:]
                 else:

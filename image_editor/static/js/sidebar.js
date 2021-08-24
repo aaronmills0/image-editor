@@ -33,6 +33,7 @@ function resetFilter(id) {
 
     if (id == 'id_crop_data' || id == 'id_crop_bool') {
       sessionStorage.removeItem("crop-sequence");
+      sessionStorage.removeItem("first-point");
     }
 
     var elem = document.getElementById(id);
@@ -63,6 +64,7 @@ function resetAll() {
     document.getElementById('id_crop_bool').value = "0";
     document.getElementById('id_crop_data').value = "";
     sessionStorage.removeItem("crop-sequence");
+    sessionStorage.removeItem("first-point");
 }
 
 function sidebarScroll() {
