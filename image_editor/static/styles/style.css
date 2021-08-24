@@ -354,7 +354,7 @@ input[type="file"] {
 }
 
 .btn-transparent,  .btn-transparent:focus, .btn-transparent:active, .btn-transparent.active, .open>.dropdown-toggle.btn-transparent {
-    background-color: Transparent;
+    background-color: transparent;
     background-repeat:no-repeat;
     border: none !important; 
     cursor:pointer;
@@ -539,13 +539,6 @@ input[value="1"] + .slider:before {
 
 input[type="color"] {
     opacity: 0;
-}
-
-input[type="number"] {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    z-index: 0;
 }
 
 input[type="text"].image-data {
