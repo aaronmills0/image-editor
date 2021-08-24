@@ -195,30 +195,34 @@ class Editor():
     
     def crop(self, encoded):
         if len(encoded) > 0:
-            data = encoded.split(':')
-            x1 = float(data[0])
-            y1 = float(data[1])
-            x2 = float(data[2])
-            y2 = float(data[3])
-            w = float(data[4])
-            h = float(data[5])
-            if h < 1 or w < 1:
+            crops = encoded.split('^')
+            for c in crops:
+                data = c.split(':')
+                x1 = float(data[0])
+                y1 = float(data[1])
+                x2 = float(data[2])
+                y2 = float(data[3])
+                w = float(data[4])
+                h = float(data[5])
+                if h < 10 or w < 10:
                     return
-            ratio = self.img.shape[0]/h
-            x1 = int(x1*ratio)
-            y1 = int(y1*ratio)
-            x2 = int(x2*ratio)
-            y2 = int(y2*ratio)
-            tx = min(x1, x2)
-            ty = min(y1, y2)
-            bx = max(x1, x2)
-            by = max(y1, y2)
-            w = bx - tx
-            h = by - ty
-            if not self.isGray():
-                self.img = self.img[ty:by,tx:bx,:]
-            else:
-                self.img = self.img[ty:by,tx:bx]
+                if abs(x1-x2) < 10 or abs(y1-y2) < 10:
+                    return
+                ratio = self.img.shape[0]/h
+                x1 = int(x1*ratio)
+                y1 = int(y1*ratio)
+                x2 = int(x2*ratio)
+                y2 = int(y2*ratio)
+                tx = min(x1, x2)
+                ty = min(y1, y2)
+                bx = max(x1, x2)
+                by = max(y1, y2)
+                w = bx - tx
+                h = by - ty
+                if not self.isGray():
+                    self.img = self.img[ty:by,tx:bx,:]
+                else:
+                    self.img = self.img[ty:by,tx:bx]
 
 
     def update(self):
@@ -248,7 +252,6 @@ class Editor():
             self.crop(self.data.get('crop_data'))
         if self.data.get('binarize') == 1:
             self.binarize()
-        print(os.listdir(self.folder)[0])
-        #cv.imshow('img', self.img)
-        #cv.waitKey(0)
-        cv.imwrite(os.path.join(self.folder,os.listdir(self.folder)[0]), self.img) 
+        if self.img is not None:
+            cv.imwrite(os.path.join(self.folder,os.listdir(self.folder)[0]), self.img) 
+        

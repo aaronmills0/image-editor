@@ -33,16 +33,19 @@ function getData(x, y, width, height){
     }
     if (crop.classList.contains("clicked-on")) {
         var fp = sessionStorage.getItem("first-point");
-        console.log(fp);
         if (fp == null) {
-            sessionStorage.setItem("first-point", String(x) + ":" + String(y)) 
+            sessionStorage.setItem("first-point", String(x) + ":" + String(y)); 
         } else {
             document.getElementById('id_crop_bool').value = "1";
             crop_data.value = sessionStorage.getItem("first-point") + ":" + String(x) + ":" + String(y) + ":" + String(width) + ":" + String(height);
+            if (sessionStorage.getItem("crop-sequence") == null) {
+                sessionStorage.setItem("crop-sequence", crop_data.value);
+            } else {
+                sessionStorage.setItem("crop-sequence", sessionStorage.getItem("crop-sequence") + "^" + crop_data.value);
+                crop_data.value = sessionStorage.getItem("crop-sequence");
+            }
             sessionStorage.removeItem("first-point");
             autoSubmit('data-form');
-            console.log(crop_data);
-            console.log(fp);
         }
     }
 }

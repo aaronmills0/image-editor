@@ -7,8 +7,10 @@ import os, shutil
 from django.conf import settings
 from .editor import Editor
 # Create your views here.
+debug = True
 img_name = None
 img_copy_name = None
+color = "#65c5ff" #ff0946
 temp = {
     "horizontal_flip": 0,
     "vertical_flip": 0,
@@ -26,7 +28,7 @@ temp = {
     "temperature": 0,
     "resize": 0,
     "color_pop_bool": 0,
-    "color_pop_color": "#ff0946",
+    "color_pop_color": color,
     "color_pop_data": "",
     "color_pop_range": 15,
     "crop_bool": 0,
@@ -62,7 +64,7 @@ def clear_tmp():
         "temperature": 0,
         "resize": 0,
         "color_pop_bool": 0,
-        "color_pop_color": "#ff0946",
+        "color_pop_color": color,
         "color_pop_data": "",
         "color_pop_range": 15,
         "crop_bool": 0,
@@ -76,7 +78,6 @@ def copy_img(name):
     index = str(name).find('.')
     new_name = str(name)[:index] + '_copy' + str(name)[index:]
     img_copy_name = new_name
-    print("New name: {}".format(new_name))
     try:
         original = os.path.join(folder, str(name))
         copy = os.path.join(folder, new_name)
@@ -89,18 +90,14 @@ def copy_img(name):
 def image_upload(request):
     clear_tmp()
     global img_name
-    print(request.method)
     template_name ='index.html'
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             img = form.save(commit=False)
-            print(form)
-            print(img)
             img.save()
             img_name = form.cleaned_data.get('image')
             copy_img(img_name)
-            print(img_name)
             return redirect('/canvas/')
     else:
         form = ImageForm()
@@ -109,7 +106,6 @@ def image_upload(request):
 def canvas(request):
     global temp
     template_name = 'canvas.html'
-    print('Name: {}'.format(img_name))
     if request.method == 'POST':
         form = DataForm(request.POST)
         if form.is_valid():
@@ -136,14 +132,13 @@ def canvas(request):
             data.update({"crop_bool": form.cleaned_data.get("crop_bool")})
             data.update({"crop_data": form.cleaned_data.get("crop_data")})
             temp = data.copy()
-            print("Data: {}".format(data))
-            print("Temp: {}".format(temp))
+            if debug:
+                print("temp: {}".format(temp))
             editor = Editor(temp)
             editor.update()
         else: 
             print("Invalid form")
     else:
-        print("Form: {}".format(temp))
         form = DataForm()
     res = {
         'name': img_name, 
@@ -170,7 +165,8 @@ def canvas(request):
         'crop_bool': temp.get('crop_bool'),
         'crop_data': temp.get('crop_data')
         }
-    print("Res: {}".format(res))
+    if debug:
+        print("res: {}".format(res))
     return render(request, template_name, res)
 
 def feedback(request):

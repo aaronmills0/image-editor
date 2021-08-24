@@ -7,6 +7,7 @@ function closeNav() {
 }
 
 function resetFilter(id) {
+    const color = "#65c5ff"
     const defaults = new Map();
     defaults.set('id_horizontal_flip', "0");
     defaults.set('id_vertical_flip', "0");
@@ -24,18 +25,22 @@ function resetFilter(id) {
     defaults.set('id_temperature', "0");
     defaults.set('id_resize', "0");
     defaults.set('id_color_pop_bool', "0");
-    defaults.set('id_color_pop_color', "#ff0946");
+    defaults.set('id_color_pop_color', color);
     defaults.set('id_color_pop_data', "");
     defaults.set('id_color_pop_range', "15");
     defaults.set('id_crop_bool', "0");
     defaults.set('id_crop_data', "");
-    console.log('hi');
+
+    if (id == 'id_crop_data' || id == 'id_crop_bool') {
+      sessionStorage.removeItem("crop-sequence");
+    }
 
     var elem = document.getElementById(id);
     elem.value = defaults.get(id);
 }
 
 function resetAll() {
+    const color = "#65c5ff"
     document.getElementById('id_horizontal_flip').value = "0";
     document.getElementById('id_vertical_flip').value = "0";
     document.getElementById('id_grayscale').value = "0";
@@ -52,11 +57,12 @@ function resetAll() {
     document.getElementById('id_temperature').value = "0";
     document.getElementById('id_resize').value = "0";
     document.getElementById('id_color_pop_bool').value = "0";
-    document.getElementById('id_color_pop_color').value = "#ff0946";
+    document.getElementById('id_color_pop_color').value = color;
     document.getElementById('id_color_pop_data').value = "";
     document.getElementById('id_color_pop_range').value = "15";
     document.getElementById('id_crop_bool').value = "0";
     document.getElementById('id_crop_data').value = "";
+    sessionStorage.removeItem("crop-sequence");
 }
 
 function sidebarScroll() {

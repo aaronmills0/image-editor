@@ -1,12 +1,11 @@
 :root {
-    --primary-color: #ff0946;
+    --primary-color: #65C5FF;
     --secondary-color: #1d222e;
     --tertiary-color: #2b3344;
     --dark-color: #151820;
     --light-color: #F5F5F5;
     --text-font: "Montserrat";
     --title-font: "Montserrat";
-    --primary-colortranslucent: rgba(255,9,70,0.2);
     --secondary-translucent: rgba(29, 34, 46, 0.8);
     --dark-translucent: rgba(21, 24, 32, 0.8);
     --tertiary-translucent: rgba(43, 51, 68, 0.8);
@@ -653,12 +652,8 @@ input[type="text"].image-data {
     top: 12px;
 }
 
-
-
-
-
 .popover {
-    background-color: var(--tertiary-translucent);
+    background-color: transparent;
     font-family: var(--title-font);
     box-shadow: none;
     outline: none;
@@ -668,10 +663,10 @@ input[type="text"].image-data {
 }
 
 .popover .popover-arrow::before, .popover .popover-arrow::after {
-    border-color: var(--tertiary-translucent);
+    border-color: transparent;
     border-top-color: transparent;
     border-bottom-color: transparent;
-    left: 0.5px
+    left: 2px
 }
 
 .popover-header {
@@ -679,6 +674,8 @@ input[type="text"].image-data {
     background-color: var(--dark-translucent);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    border-color: transparent;
+    outline: none;
 }
 
 .popover-body {
@@ -686,4 +683,5 @@ input[type="text"].image-data {
     color: var(--light-color);
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
+    border-color: transparent;
 }

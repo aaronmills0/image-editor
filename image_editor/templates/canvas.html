@@ -17,7 +17,7 @@
                             <form method="post" id="data-form">
                                 {% csrf_token %}
                                 <div class="card sidebar-card align-items-center mt-3">
-                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Horizontal Flip" data-bs-content="Flips the image across its central vertical line."><i class="bi-question"></i></a>
+                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Horizontal Flip" data-bs-content="Flips the image across its central vertical line."><i class="bi-question"></i></a>
                                     <p class="secondary-title sidebar-title">Horizontal</p>
                                     <label class="switch"> 
                                         <input type="switch" value="{{ horizontal_flip }}" onclick="toggleSlider('id_horizontal_flip');autoSubmit('data-form');refreshImage();" onchange="refreshImage();" name="horizontal_flip" id="id_horizontal_flip">
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card align-items-center">
-                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Vertical Flip" data-bs-content="Flips the image across its central horizontal line."><i class="bi-question"></i></a>
+                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Vertical Flip" data-bs-content="Flips the image across its central horizontal line."><i class="bi-question"></i></a>
                                     <p class="secondary-title sidebar-title">Vertical</p>
                                     <label class="switch"> 
                                         <input type="switch" value="{{ vertical_flip }}" onclick="toggleSlider('id_vertical_flip');autoSubmit('data-form');refreshImage();" onchange="refreshImage();" name="vertical_flip" id="id_vertical_flip">
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card align-items-center">
-                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Grayscale" data-bs-content="Converts the image to grayscale."><i class="bi-question"></i></a>
+                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Grayscale" data-bs-content="Converts the image to grayscale."><i class="bi-question"></i></a>
                                     <p class="secondary-title sidebar-title">Grayscale</p>
                                     <label class="switch"> 
                                         <input type="switch" value="{{ grayscale }}" onclick="toggleSlider('id_grayscale');autoSubmit('data-form');refreshImage();" onchange="refreshImage();" name="grayscale" id="id_grayscale">
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card align-items-center">
-                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Sepia" data-bs-content="Sepia filter is applied to the image."><i class="bi-question"></i></a>
+                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Sepia" data-bs-content="Sepia filter is applied to the image."><i class="bi-question"></i></a>
                                     <p class="secondary-title sidebar-title">Sepia</p>
                                     <label class="switch"> 
                                         <input type="switch" value="{{ sepia }}" onclick="toggleSlider('id_sepia');autoSubmit('data-form');refreshImage();" onchange="refreshImage();" name="sepia" id="id_sepia">
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card align-items-center">
-                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Binarize" data-bs-content="Image pixels are set to either black or white depending on their original intensity."><i class="bi-question"></i></a>
+                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Binarize" data-bs-content="Image pixels are set to either black or white depending on their original intensity."><i class="bi-question"></i></a>
                                     <p class="secondary-title sidebar-title">Binarize</p>
                                     <label class="switch"> 
                                         <input type="switch" value="{{ binarize }}" onclick="toggleSlider('id_binarize');autoSubmit('data-form');refreshImage();" onchange="refreshImage();" name="binarize" id="id_binarize">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card align-items-center">
-                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Histogram Equalization" data-bs-content="Histogram Equalization is applied to the image."><i class="bi-question"></i></a>
+                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Histogram Equalization" data-bs-content="Histogram Equalization is applied to the image."><i class="bi-question"></i></a>
                                     <p class="secondary-title sidebar-title">Equalize</p>
                                     <label class="switch"> 
                                         <input type="switch" value="{{ histogram_equalize }}" onclick="toggleSlider('id_histogram_equalize');autoSubmit('data-form');refreshImage();" onchange="refreshImage();" name="histogram_equalize" id="id_histogram_equalize">
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card align-items-center">
-                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Invert Colors" data-bs-content="The color of each pixel in the image is inverted."><i class="bi-question"></i></a>
+                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Invert Colors" data-bs-content="The color of each pixel in the image is inverted."><i class="bi-question"></i></a>
                                     <p class="secondary-title sidebar-title">Invert</p>
                                     <label class="switch"> 
                                         <input type="switch" value="{{ invert }}" onclick="toggleSlider('id_invert');autoSubmit('data-form');refreshImage();" onchange="refreshImage();" name="invert" id="id_invert">
@@ -80,63 +80,63 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
-                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Smoothness" data-bs-content="Click on the track or drag the thumb along the track to apply a blur to the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
+                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Smoothness" data-bs-content="Click on the track or drag the thumb along the track to apply a blur to the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_smoothness');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Smoothness</p>
                                     <input type="range" class="form-range sidebar-range" min="0" max="32" step="1" value="{{ smoothness }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="smoothness" id="id_smoothness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
-                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Sharpness" data-bs-content="Click on the track or drag the thumb along the track to sharpen the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
+                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Sharpness" data-bs-content="Click on the track or drag the thumb along the track to sharpen the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_sharpness');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Sharpness</p>
                                     <input type="range" class="form-range sidebar-range" min="0" max="8" step="1" value="{{ sharpness }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="sharpness" id="id_sharpness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
-                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Brightness" data-bs-content="Click on the track or drag the thumb along the track to change the brightness of the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
+                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Brightness" data-bs-content="Click on the track or drag the thumb along the track to change the brightness of the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_brightness');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Brightness</p>
                                     <input type="range" class="form-range sidebar-range" min="-12" max="12" step="1" value="{{ brightness }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="brightness" id="id_brightness">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
-                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Contrast" data-bs-content="Click on the track or drag the thumb along the track to change the contrast of the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
+                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Contrast" data-bs-content="Click on the track or drag the thumb along the track to change the contrast of the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_contrast');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Contrast</p>
                                     <input type="range" class="form-range sidebar-range" min="1" max="19" step="1" value="{{ contrast }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="contrast" id="id_contrast">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
-                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Gamma Correction" data-bs-content="Click on the track or drag the thumb along the track to apply a gamma correction to the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
+                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Gamma Correction" data-bs-content="Click on the track or drag the thumb along the track to apply a gamma correction to the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_gamma_correction');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Gamma</p>
                                     <input type="range" class="form-range sidebar-range" min="1" max="19" step="1" value="{{ gamma_correction }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="gamma_correction" id="id_gamma_correction">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
-                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Saturation" data-bs-content="Click on the track or drag the thumb along the track to change the saturation of the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
+                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Saturation" data-bs-content="Click on the track or drag the thumb along the track to change the saturation of the image. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_saturation');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Saturation</p>
                                     <input type="range" class="form-range sidebar-range" min="1" max="19" step="1" value="{{ saturation }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="saturation" id="id_saturation">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
-                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Temperature" data-bs-content="Click on the track or drag the thumb along the track to change the temperature of the image. The thumb at a rightward position results in a warmer color, and at a leftward position results in a cooler color. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
+                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Temperature" data-bs-content="Click on the track or drag the thumb along the track to change the temperature of the image. The thumb at a rightward position results in a warmer color, and at a leftward position results in a cooler color. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_temperature');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Temperature</p>
                                     <input type="range" class="form-range sidebar-range" min="-20" max="20" step="1" value="{{ temperature }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="temperature" id="id_temperature">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card">
-                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Resize" data-bs-content="Click on the track or drag the thumb along the track to resize the image. This will be more visible after download. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
+                                    <a tabindex="0" class="popover help-popover-reset" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Resize" data-bs-content="Click on the track or drag the thumb along the track to resize the image. This will be more visible after download. Click the reset button to return the slider to its original state."><i class="bi-question question-reset"></i></a>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_resize');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Resize</p>
                                     <input type="range" class="form-range sidebar-range" min="-5" max="5" step="1" value="{{ resize }}" onchange="autoSubmit('data-form');" onchange="refreshImage();" name="resize" id="id_resize">
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card slider-card large-card align-items-center">
-                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Color Pop" data-bs-content="The color pop filter allows you to select a hue range around a specific color to be displayed. Any pixel in the image that is not within this range is converted to grayscale. The bucket icon allows you to select a color from a color picker. The dropper icon allows you to click on the image to select a color. Click on the track or drag the thumb along the track to change the hue range that is accepted for the color pop. Click the reset button to return the slider to its original state."><i class="bi-question"></i></a>
+                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Color Pop" data-bs-content="The color pop filter allows you isolate a chosen color in your image. Any pixel in the image that is not within a certain range of the chosen color is converted to grayscale. The bucket icon allows you to select a color from a color picker. The dropper icon allows you to click on the image to select a color. Click on the track or drag the thumb along the track to change the range that is accepted for the color pop. Click the reset button to return the slider to its original state."><i class="bi-question"></i></a>
                                     <p class="secondary-title sidebar-title">Color Pop</p>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_color_pop_color');resetFilter('id_color_pop_bool');resetFilter('id_color_pop_data');resetFilter('id_color_pop_range');autoSubmit('data-form');"></i>
                                     <div class="row d-flex justify-content-center">
@@ -153,7 +153,7 @@
                                 </div>
                                 <div class="side-padding"></div>
                                 <div class="card sidebar-card slider-card medium-card align-items-center">
-                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus" title="Crop" data-bs-content="Click on the crop icon to initiate cropping. Then click on two points on the image to define the area that you would like to crop. Click the reset button or toggle the slider to return the iamge to its original state."><i class="bi-question"></i></a>
+                                    <a tabindex="0" class="popover help-popover" role="tooltip" data-bs-toggle="popover" data-bs-trigger="focus hover" title="Crop" data-bs-content="Click on the crop icon to begin cropping. Select two pixels in the image to define the desired result. Click the reset button or toggle the slider to the off position to return the image to its original state."><i class="bi-question"></i></a>
                                     <i class="bi-arrow-counterclockwise reset-button" onclick="resetFilter('id_crop_bool');resetFilter('id_crop_data');autoSubmit('data-form');"></i>
                                     <p class="secondary-title sidebar-title">Crop</p>
                                     <label class="switch"> 
@@ -171,7 +171,7 @@
         </div>                
     </div>
     <div class="row d-flex justify-content-center">
-        <div class="col-sm-2 mt-1">
+        <div class="col-sm-1 mt-1">
             <button class="btn-custom-circle sidebar-open" type="button" onclick="openNav()"><i class="sidebar-icon bi-list"></i></button>
         </div>
         <div class="col-md-8 text-center">
@@ -185,8 +185,8 @@
                 {% endif %}
             </div>
             <div class="row d-flex justify-content-center">
-                <a class="btn-custom mb-3 mt-3" id="back-button" href="{% url 'upload' %}"><i class="bi-arrow-left"></i></a>
-                <a class="btn-custom mb-3 mt-3" id="download-button" href="../media/tmp/{{ name }}" download="{{ name }}"><i class="bi-download"></i></a>
+                <a class="btn-custom mb-3 mt-3" id="back-button" href="{% url 'upload' %}" onclick="resetFilter('id_crop_data');"><i class="bi-arrow-left"></i></a>
+                <a class="btn-custom mb-3 mt-3" id="download-button" href="../media/tmp/{{ name }}" download="{{ name }}" id="download-button"><i class="bi-download"></i></a>
             </div>
         </div>
     </div>
