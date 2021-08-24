@@ -226,6 +226,12 @@ input[type="file"] {
 .sidebar-icon {
     font-size: 24px;
     vertical-align: middle;
+    transition: 0.5;
+}
+
+#open-sidebar {
+    opacity: 0%;
+    cursor: default;
 }
 
 .sidebar-close-icon {

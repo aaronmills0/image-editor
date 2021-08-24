@@ -1,9 +1,15 @@
 function openNav() {
     document.getElementById("sidebar").style.left = "0px";
+    var open = document.getElementById("open-sidebar");
+    open.style.opacity = "0%";
+    open.style.cursor = "default";
 }
 
 function closeNav() {
     document.getElementById("sidebar").style.left = "-250px";
+    var open = document.getElementById("open-sidebar");
+    open.style.opacity = "100%";
+    open.style.cursor = "pointer";
 }
 
 function resetFilter(id) {
@@ -78,4 +84,10 @@ function sidebarScroll() {
       window.addEventListener("beforeunload", () => {
         sessionStorage.setItem("sidebar-scroll", sidebar.scrollTop);
       });
+}
+
+function resetScroll() {
+    if (sessionStorage.getItem("sidebar-scroll") != null) {
+      sessionStorage.removeItem("sidebar-scroll");
+    }
 }
