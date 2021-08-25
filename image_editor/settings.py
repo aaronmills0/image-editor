@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-ni27v@xizq!3=(4o39b9zm!t00snbzw7tx$ccsjy@7%9+s-v7l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['imageedit.herokuapp.com']
 
 
 # Application definition
