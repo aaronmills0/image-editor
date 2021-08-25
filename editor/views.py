@@ -39,6 +39,8 @@ def clear_tmp():
     global temp
     folder = settings.MEDIA_ROOT + 'tmp'
     for filename in os.listdir(folder):
+        if filename.startswith('.'):
+            continue
         file_path = os.path.join(folder, filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
