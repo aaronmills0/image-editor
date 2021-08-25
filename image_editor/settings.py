@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'adfklwe895eryhqfouwawt489337651y0tqho
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = os.environ.get('DEBUG', '') == 'True'
-DEBUG = True;
+DEBUG = os.environ.get('DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = ['127.0.0.1', 'imageedit.herokuapp.com']
 
