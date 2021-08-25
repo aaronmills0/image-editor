@@ -7,8 +7,8 @@ class Editor():
     def __init__(self, data):
         self.data = data
         self.folder = settings.MEDIA_ROOT + 'tmp'
-        self.ref = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[1]))
-        self.img = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[0]))
+        self.ref = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[2]))
+        self.img = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[1]))
         self.img = self.ref.copy()
 
     def isGray(self):
@@ -224,6 +224,8 @@ class Editor():
 
 
     def update(self):
+        if self.data.get('crop_bool') == 1:
+            self.crop(self.data.get('crop_data'))
         if self.data.get('horizontal_flip') == 1:
             self.horizontal_flip()
         if self.data.get('vertical_flip') == 1:
@@ -246,10 +248,8 @@ class Editor():
         self.resize(self.data.get('resize'))
         if self.data.get('color_pop_bool') == 1:
             self.color_pop_color(self.data.get('color_pop_color'), self.data.get('color_pop_data'), self.data.get('color_pop_range'))
-        if self.data.get('crop_bool') == 1:
-            self.crop(self.data.get('crop_data'))
         if self.data.get('binarize') == 1:
             self.binarize()
         if self.img is not None:
-            cv.imwrite(os.path.join(self.folder,os.listdir(self.folder)[0]), self.img) 
+            cv.imwrite(os.path.join(self.folder,os.listdir(self.folder)[1]), self.img) 
         

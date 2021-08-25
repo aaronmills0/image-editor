@@ -1,6 +1,7 @@
 from django import forms
 from .models import Image, Feedback
-from django.forms.widgets import RangeInput, SwitchInput, NumberInput
+from django.forms.widgets import NumberInput
+from .custom_widgets import RangeInput, SwitchInput
 from colorfield.widgets import ColorWidget
 
 class ImageForm(forms.ModelForm):
