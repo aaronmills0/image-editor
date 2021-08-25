@@ -10,9 +10,9 @@ class Editor():
         try:
             self.ref = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[2]))
             self.img = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[1]))
+            self.img = self.ref.copy()
         except:
             raise Exception("Failed to upload image")
-        self.img = self.ref.copy()
 
     def isGray(self):
         if len(self.img.shape) == 3:
