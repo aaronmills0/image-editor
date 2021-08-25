@@ -224,12 +224,12 @@ class Editor():
 
 
     def update(self):
-        if self.data.get('crop_bool') == 1:
-            self.crop(self.data.get('crop_data'))
         if self.data.get('horizontal_flip') == 1:
             self.horizontal_flip()
         if self.data.get('vertical_flip') == 1:
             self.vertical_flip()
+        if self.data.get('crop_bool') == 1:
+            self.crop(self.data.get('crop_data'))
         if self.data.get('grayscale') == 1:
             self.grayscale()
         if self.data.get('sepia') == 1:
