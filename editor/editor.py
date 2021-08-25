@@ -7,8 +7,11 @@ class Editor():
     def __init__(self, data):
         self.data = data
         self.folder = settings.MEDIA_ROOT + 'tmp'
-        self.ref = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[2]))
-        self.img = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[1]))
+        try:
+            self.ref = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[2]))
+            self.img = cv.imread(os.path.join(self.folder, os.listdir(self.folder)[1]))
+        except:
+            raise Exception("Failed to upload image")
         self.img = self.ref.copy()
 
     def isGray(self):
