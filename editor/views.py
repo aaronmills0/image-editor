@@ -7,7 +7,7 @@ import os, shutil
 from django.conf import settings
 from .editor import Editor
 # Create your views here.
-debug = True
+debug = False
 img_name = None
 img_copy_name = None
 color = "#65c5ff" #ff0946

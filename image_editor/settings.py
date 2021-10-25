@@ -30,10 +30,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/media/')
 SECRET_KEY = os.environ.get('SECRET_KEY', 'adfklwe895eryhqfouwawt489337651y0tqhoaiufsdthf248932ru2fh3WR8293')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = os.environ.get('DEBUG', '') == 'True'
 DEBUG = os.environ.get('DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'imageedit.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
