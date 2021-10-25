@@ -36,5 +36,9 @@
 | <br><img src="https://github.com/aaronmills0/image-editor/blob/main/readme_images/catia_matos.jpeg" width="500"><br>Photo by: Catia Matos |  <img src="https://github.com/aaronmills0/image-editor/blob/main/readme_images/catia_matos_edited.jpeg" width="500"><br> |
 | <br><img src="https://github.com/aaronmills0/image-editor/blob/main/readme_images/ricardo_esquivel.jpeg" width="500"><br>Photo by: Ricardo Esquivel |  <img src="https://github.com/aaronmills0/image-editor/blob/main/readme_images/ricardo_esquivel_edited.jpeg" width="500"><br> |
 
+## Technology Stack
+* Django
+* OpenCV
+
 ## Run Application
 python manage.py runserver
