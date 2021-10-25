@@ -35,6 +35,6 @@ jobs:
         run: pip install -r requirements.txt
       - name: Migrate
         run: python manage.py migrate
-      - name: Run server
-        run: python manage.py runserver
+      - name: Test
+        run: python manage.py test
         
