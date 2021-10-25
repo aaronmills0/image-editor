@@ -7,7 +7,7 @@
 | Vertical Flip | Flips the image across its central horizontal line. |
 | Grayscale | Converts the image to grayscale. |
 | Sepia | Sepia filter is applied to the image. |
-| Biniarization | Image pixels are set to either black or white depending on their original intensity. |
+| Binarization | Image pixels are set to either black or white depending on their original intensity. |
 | Histogram Equalization | Histogram Equalization is applied to the image. |
 | Invert Colors | The color of each pixel in the image is inverted. |
 | Smoothness | Apply a blur to the image. |
