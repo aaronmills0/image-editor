@@ -28,7 +28,7 @@ jobs:
       - name: Setup python environment
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.8.6'
       - name: Check Python version
         run: python --version
       - name: Install requirements
