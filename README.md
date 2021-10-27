@@ -1,4 +1,9 @@
 # Image Editor Project
+* [Features](https://github.com/aaronmills0/image-editor#features)
+* [User Interface](https://github.com/aaronmills0/image-editor#user-interface)
+* [Examples](https://github.com/aaronmills0/image-editor#examples)
+* [Technology Stack](https://github.com/aaronmills0/image-editor#technology-stack)
+* [Run Application](https://github.com/aaronmills0/image-editor#run-application)
 
 ## Features
 | Feature | Description |
